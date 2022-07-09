@@ -14,10 +14,11 @@ if(N < i)
 {
     Console.WriteLine("Введеное Вами число не соответствует запросу, так как меньше единицы.");
 } else
-
-Console.Write($"В интервале от 1 до {N} четными являются: ");
-while(i <= N)
 {
-    Console.Write($"{i} ");
-    i = i + 2;
+    Console.Write($"В интервале от 1 до {N} четными являются: ");
+    while(i <= N)
+    {
+        Console.Write($"{i} ");
+        i = i + 2;
+    }
 }
