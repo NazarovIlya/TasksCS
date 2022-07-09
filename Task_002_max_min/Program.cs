@@ -7,8 +7,6 @@ int num1 = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите второе целое число: ");
 int num2 = Convert.ToInt32(Console.ReadLine());
 
-int max = 0;
-int min = 0;
 if(num1 == num2)
 {
     Console.WriteLine($"Введеные числа равны {num1} = {num2}");
