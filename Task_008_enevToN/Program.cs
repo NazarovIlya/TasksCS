@@ -6,22 +6,24 @@ Console.WriteLine("Введите целое число от 1 до N: ");
 int N = Convert.ToInt32(Console.ReadLine());
 int i = 1;
 
-if(N == 1)
+if (N == 1)
 {
     Console.WriteLine("В данном интервале четных чисел нет");
-} else 
-if(N < i)
+}
+else
+if (N < i)
 {
     Console.WriteLine("Введеное Вами число не соответствует запросу, так как меньше единицы.");
-} else
+}
+else
 {
     Console.Write($"В интервале от 1 до {N} четными являются: ");
-        while(i <= N)
+    while (i <= N)
+    {
+        if (i % 2 == 0)
         {
-            if(i % 2 == 0)
-            {
-                Console.Write($"{i} ");
-            }
-            i++;
+            Console.Write($"{i} ");
         }
+        i++;
+    }
 }

@@ -4,6 +4,6 @@ Console.Write("Введите второе число: ");
 int num2 = Convert.ToInt32(Console.ReadLine());
 
 int result = num1 / num2;
-if(result == num2)
-Console.WriteLine("Yes");
+if (result == num2)
+    Console.WriteLine("Yes");
 else Console.WriteLine("No");

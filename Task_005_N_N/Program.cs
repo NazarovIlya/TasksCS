@@ -7,8 +7,8 @@ Console.WriteLine("Введите любое натуральное число: 
 int N = Convert.ToInt32(Console.ReadLine());
 
 int i;
-i = - N;
-while(i <= N)
+i = -N;
+while (i <= N)
 {
     Console.Write($"{i} ");
     i++;
