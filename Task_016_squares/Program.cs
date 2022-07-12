@@ -20,9 +20,9 @@ bool result = IsSquare(num1, num2);
 
 if (result)
 {
-    Console.WriteLine($"{num1}, {num2} -> yes");
+    Console.WriteLine($"{num1}, {num2} -> Одно число является квадратом другого");
 }
 else
 {
-    Console.WriteLine($"{num1}, {num2} -> no");
+    Console.WriteLine($"{num1}, {num2} -> Ни одно из чисел не является квадратом другого");
 }
