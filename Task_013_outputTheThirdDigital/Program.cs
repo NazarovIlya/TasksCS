@@ -15,11 +15,12 @@ int ThirdDigital(int number)
         return 0;
     else
     {
-        while (num > 1000)
+        int tempNum = num;
+        while (tempNum > 1000)
         {
-            num = num / 10;
+            tempNum = tempNum / 10;
         }
-        res = num % 10;
+        res = tempNum % 10;
         return res;
     }
 
