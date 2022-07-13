@@ -25,9 +25,6 @@ int ThirdDigital(int number)
 
 }
 int result = ThirdDigital(num);
-// if (num >= 1000 || num < -999)
-//      Console.WriteLine("Введеное число более трехзначного.");
-// else
 if (result == 0)
     Console.WriteLine("Третьей цифры нет или она является нулем");
 else
