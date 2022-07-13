@@ -29,6 +29,6 @@ int result = ThirdDigital(num);
 //      Console.WriteLine("Введеное число более трехзначного.");
 // else
 if (result == 0)
-    Console.WriteLine("Третьей цифры нет. Возможно число не является трехзначным и находится в интервале от -99 до 99 или равно 100 / - 100");
+    Console.WriteLine("Третьей цифры нет или она является нулем");
 else
     Console.WriteLine($"{num} --> {result}");
