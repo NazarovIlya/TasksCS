@@ -7,15 +7,14 @@
 Console.Clear();
 Console.WriteLine("Введите целое цисло: ");
 int num = Convert.ToInt32(Console.ReadLine());
-
+int tempNum = num;
 int ThirdDigital(int number)
 {
     int res = 0;
-    if (num / 100 == 0)
+    if (tempNum / 100 == 0)
         return 0;
     else
     {
-        int tempNum = num;
         while (tempNum > 1000)
         {
             tempNum = tempNum / 10;
@@ -23,7 +22,6 @@ int ThirdDigital(int number)
         res = tempNum % 10;
         return res;
     }
-
 }
 int result = ThirdDigital(num);
 if (result == 0)
