@@ -9,7 +9,7 @@ Console.Clear();
 // Способ ввода данных на выбор:
 Console.WriteLine("Введите целое трехзначное число: ");
 int num = Convert.ToInt32(Console.ReadLine());
-//int num = 583;//new Random().Next(90, 1000);
+//int num = new Random().Next(90, 1000);
 
 int SecondDigital(int number)
 {
