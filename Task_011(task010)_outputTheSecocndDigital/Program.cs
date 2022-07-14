@@ -19,7 +19,7 @@ int SecondDigital(int number)
 }
 
 int result = SecondDigital(num);
-if (result == 0 || num < 100 || num > 999)
+if (result == 0 || (num < 100 && num > -100) || (num > 999 || num < -1000))
     Console.WriteLine("Вы ввели недопустимое значение.");
 else
     Console.WriteLine($"{num} --> {result}");
