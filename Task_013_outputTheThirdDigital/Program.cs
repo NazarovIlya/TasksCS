@@ -10,7 +10,7 @@ int num = Convert.ToInt32(Console.ReadLine());
 
 int ThirdDigital(int number)
 {
-    int res = 0;
+    int res = 1;
     if (number / 100 == 0)
         return 0;
     else
