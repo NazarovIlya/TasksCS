@@ -13,7 +13,7 @@ int num = Convert.ToInt32(Console.ReadLine());
 
 int SecondDigital(int number)
 {
-    int firstTwo = num / 10;
+    int firstTwo = number / 10;
     int res = firstTwo % 10;
     return res;
 }
