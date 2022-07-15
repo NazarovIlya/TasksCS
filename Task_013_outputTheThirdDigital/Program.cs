@@ -10,7 +10,7 @@ int num = Convert.ToInt32(Console.ReadLine());
 
 int ThirdDigital(int number)
 {
-    int res = 1;
+    int res = 0;
     if (number / 100 == 0)
         return 0;
     else
@@ -25,6 +25,6 @@ int ThirdDigital(int number)
 }
 int result = ThirdDigital(num);
 if (result == 0)
-    Console.WriteLine("Третьей цифры нет или она является нулем");
+    Console.WriteLine("Третьей цифры нет.");
 else
     Console.WriteLine($"{num} --> {result}");
