@@ -4,16 +4,16 @@
 // 5 -> 1, 8, 27, 64, 125
 
 Console.WriteLine("Введите число: ");
-int N = Convert.ToInt32(Console.ReadLine());
+int n = Convert.ToInt32(Console.ReadLine());
 
 void TableCubes(int numMax)
 {
     int num = 1;
     while (num <= numMax)
     {
-        Console.WriteLine($"{N} --> | {num} | {num * num * num}   |");
+        Console.WriteLine($"{n} --> | {num} | {num * num * num}   |");
         num++;
     }
 }
 
-TableCubes(N);
+TableCubes(n);
