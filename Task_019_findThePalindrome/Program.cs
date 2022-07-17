@@ -38,4 +38,5 @@ Console.Clear();
 Console.WriteLine("Введите целое число: ");
 int num = Convert.ToInt32(Console.ReadLine());
 int num2 = IsPalindrome(num);
+OutputResult(num, num2);
 
