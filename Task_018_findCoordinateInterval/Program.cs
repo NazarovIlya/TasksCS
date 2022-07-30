@@ -5,7 +5,8 @@
 Console.Clear();
 
 Console.WriteLine("Введите номер четверти: ");
-string num = Console.ReadLine();
+string? num = Console.ReadLine();
+if (num == null) num = "";
 
 string FindCoordinateInterval(string q)
 {
