@@ -3,25 +3,28 @@ Console.Clear();
 Console.WriteLine("До скольки очков Вы хотели бы играть: ");
 int maxScore = Convert.ToInt32(Console.ReadLine());
 int score = 0;
+int compScore = 0;
 
 void OutputNobody()
 {
     score += 1;
-    Console.WriteLine($"Ответ совпал с ответом компьютера. Ваш счет: {score} Продолжаем:");
+    compScore += 1;
+    Console.WriteLine($"Ответ совпал с ответом компьютера. Cчет: {score} : {compScore}.");
 }
 void OutputUserWin()
 {
     score += 2;
-    Console.WriteLine($"Поздравляю, Вы выиграли! Ваш счет: {score} Продолжаем:");
+    Console.WriteLine($"Поздравляю, Вы выиграли! Ваш счет: {score} : {compScore}.");
 }
 void OutputUserLose()
 {
-    Console.WriteLine($"К сожалению выиграл компьютер! Ваш счет: {score} Продолжаем:");
+    compScore += 2;
+    Console.WriteLine($"К сожалению выиграл компьютер! Ваш счет: {score} : {compScore}.");
 }
 
 void RockPaperScissors(int maxScore)
 {
-    for (int i = 0; score < maxScore; i++)
+    for (int i = 0; score < maxScore && compScore < maxScore; i++)
     {
         Console.WriteLine("Камень, ножницы, бумага?");
         string userAnswer = Console.ReadLine();
