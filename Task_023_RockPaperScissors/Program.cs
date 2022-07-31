@@ -27,7 +27,9 @@ void RockPaperScissors(int maxScore)
     for (int i = 0; score < maxScore && compScore < maxScore; i++)
     {
         Console.WriteLine("Камень, ножницы, бумага?");
-        string userAnswer = Console.ReadLine();
+        string userAnswer = Console.ReadLine()!;
+        if (userAnswer == "")
+            Console.WriteLine("Ошибка ввода.");
         int ans = 0;
         int compAnswer = new Random().Next(1, 3);
         if (userAnswer.ToLower() == "камень") ans = 1;
