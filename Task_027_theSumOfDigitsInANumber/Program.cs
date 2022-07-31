@@ -32,5 +32,11 @@ int SumOfDigits(int number)
     return sum;
 }
 
-int result = SumOfDigits(num);
-Console.WriteLine($"Сумма цифр в числе {result}");
+void PrintResult(int result)
+{
+    Console.WriteLine($"Сумма цифр в числе {result}");
+}
+
+int res = SumOfDigits(num);
+PrintResult(res);
+
