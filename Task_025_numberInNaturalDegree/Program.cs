@@ -19,5 +19,10 @@ int Exponentiation(int number, int degree)
     return exponentiationNumber;
 }
 
-int result = Exponentiation(nA, nB);
-Console.WriteLine($"Число {nA} в натуральной степени {nB} дает число {result}");
+void PrintResult(int result)
+{
+    Console.WriteLine($"Число {nA} в натуральной степени {nB} дает число {result}");
+}
+
+int res = Exponentiation(nA, nB);
+PrintResult(res);
