@@ -11,23 +11,11 @@ int SumOfDigits(int number)
 {
     int digit = 0;
     int sum = 0;
-    if (number > 0)
+    for (int i = 0; number > 0 || number < 0; i++)
     {
-        for (int i = 0; number > 0; i++)
-        {
-            digit = number % 10;
-            sum += digit;
-            number = number / 10;
-        }
-    }
-    else if (number < 0)
-    {
-        for (int i = 0; number < 0; i++)
-        {
-            digit = number % 10;
-            sum += digit;
-            number = number / 10;
-        }
+        digit = number % 10;
+        sum += digit;
+        number = number / 10;
     }
     return sum;
 }
@@ -37,6 +25,8 @@ void PrintResult(int result)
     Console.WriteLine($"Сумма цифр в числе {result}");
 }
 
-int res = SumOfDigits(num);
+int res = 0;
+if (num > 0) res = SumOfDigits(num);
+else if (num < 0) res = SumOfDigits(num);
 PrintResult(res);
 
