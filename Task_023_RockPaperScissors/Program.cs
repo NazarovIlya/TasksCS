@@ -32,7 +32,7 @@ void RockPaperScissors(int maxScore)
         if (userAnswer == "")
             Console.WriteLine("Ошибка ввода.");
         int ans = 0;
-        int compAnswer = new rnd.Next(1, 4);
+        int compAnswer = rnd.Next(1, 4);
         if (userAnswer.ToLower() == "камень") ans = 1;
         else if (userAnswer.ToLower() == "ножницы") ans = 2;
         else if (userAnswer.ToLower() == "бумага") ans = 3;
