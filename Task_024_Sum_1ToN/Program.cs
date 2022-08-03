@@ -19,7 +19,10 @@ int Sum1ToN(int number)
     return sum;
 }
 
-//void PrintSum(int)
+void PrintSum(int number, int sum)
+{
+    Console.WriteLine($"Сумма чисел от 1 до {number} --> {sum}");
+}
 
 int result = Sum1ToN(nA);
-Console.WriteLine($"Сумма {result}");
+PrintSum(nA, result);
