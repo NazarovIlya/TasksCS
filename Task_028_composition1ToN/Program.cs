@@ -18,5 +18,11 @@ int Composition(int number)
     return composition;
 }
 
-int result = Composition(nA);
-Console.WriteLine($"Произведение всех чисел от 1 до {nA} --> {result}");
+void PrintComposition(int number, int result)
+{
+    Console.WriteLine($"Произведение всех чисел от 1 до {nA} --> {result}");
+}
+
+int res = Composition(nA);
+PrintComposition(nA, res);
+
