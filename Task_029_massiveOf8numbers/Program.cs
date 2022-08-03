@@ -5,16 +5,18 @@ Console.Clear();
 
 void FillArray(int[] array)
 {
+    Random rnd = new Random();
     int length = array.Length;
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(0, 1000);
+        array[i] = rnd.Next(0, 1000);
     }
 
 }
 
 void PrintArray(int[] array)
 {
+    Console.WriteLine($"Задан массив из {array.Length} чисел случайным образом:");
     for (int i = 0; i < array.Length; i++)
     {
         Console.Write($"{array[i]} ");
@@ -23,5 +25,4 @@ void PrintArray(int[] array)
 
 int[] arr = new int[8];
 FillArray(arr);
-Console.WriteLine("Задан массив из 8 чисел случайным образом:");
 PrintArray(arr);
