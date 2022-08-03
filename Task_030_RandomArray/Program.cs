@@ -7,7 +7,6 @@
 Console.Clear();
 Console.WriteLine("Введите число: ");
 int nA = Convert.ToInt32(Console.ReadLine());
-
 int[] GetRandomArray(int arrayLength)
 {
     Random rnd = new Random();
