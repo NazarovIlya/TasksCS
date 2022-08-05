@@ -28,9 +28,8 @@ int GetSumEven(int[] array)
     return sum;
 }
 
-void PrintSumEven(int[] array)
+void PrintSumEven(int[] array, int result)
 {
-    int result = GetSumEven(array);
     Console.Write("В массиве: [");
     for (int i = 0; i < array.Length; i++)
     {
@@ -41,4 +40,5 @@ void PrintSumEven(int[] array)
     Console.WriteLine($"сумма элементов, стоящих на нечётных позициях --> {result}");
 }
 int[] arr = FillArray(num);
-PrintSumEven(arr);
+int res = GetSumEven(arr);
+PrintSumEven(arr, res);
