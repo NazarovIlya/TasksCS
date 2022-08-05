@@ -4,16 +4,32 @@
 
 Console.WriteLine("Введите количество элементов массива: ");
 int num = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите максимальный порядок чисел: ");
+int ord = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите количество знаков после запятой: ");
+int signsAfter = Convert.ToInt32(Console.ReadLine());
 
-double[] FillArray(int arrayLength)
+double[] FillArray(int arrayLength, int order, int signsAfterDot)
 {
+    double res = 0;
     Random rnd = new Random();
     double[] array = new double[arrayLength];
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = rnd.Next(0, 100);
+        res = rnd.NextDouble() * order;
+        array[i] = Math.Round(res, signsAfterDot);
     }
     return array;
+}
+
+int GetOrder(int numberOrder = 1)
+{
+    int resOrder = 1;
+    for (int i = 0; i < numberOrder; i++)
+    {
+        resOrder = resOrder * 10;
+    }
+    return resOrder;
 }
 
 double GetMin(double[] array)
@@ -43,21 +59,22 @@ double GetDiscrepancy(double min, double max)
     return discrepancy;
 }
 
-void PrintResult(double[] array, double result)
+void PrintResult(double[] array, double result, int sign)
 {
     Console.Write("В массиве: [");
     for (int i = 0; i < array.Length; i++)
     {
         if (i < array.Length - 1)
-            Console.Write($"{array[i]} , ");
-        else Console.Write($"{array[i]}] ");
+            Console.Write($"{array[i]}, ");
+        else Console.WriteLine($"{array[i]}] ");
     }
-    Console.Write($"разница между максимальным и минимальным значением элемента массива состовляет {result}");
-
+    result = Math.Round(result, sign);
+    Console.WriteLine($"разница между максимальным и минимальным значением элемента массива состовляет {result}");
 }
 
-double[] arr = FillArray(num);
+int resOrder = GetOrder(ord);
+double[] arr = FillArray(num, resOrder, signsAfter);
 double minimum = GetMin(arr);
 double maximum = GetMax(arr);
 double res = GetDiscrepancy(minimum, maximum);
-PrintResult(arr, res);
+PrintResult(arr, res, signsAfter);
