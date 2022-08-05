@@ -3,7 +3,7 @@
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
-Console.WriteLine("");
+Console.WriteLine("Введите количество элементов массива: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
 int[] FillArray(int arrayLength)
@@ -42,5 +42,3 @@ void PrintSumEven(int[] array)
 }
 int[] arr = FillArray(num);
 PrintSumEven(arr);
-// int result = GetSumEven(arr);
-// Console.WriteLine($"Сумма элементов, стоящих на нечётных позициях -->{result}");
