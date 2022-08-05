@@ -66,7 +66,7 @@ void PrintResult(double[] array, double result, int sign)
     {
         if (i < array.Length - 1)
             Console.Write($"{array[i]}, ");
-        else Console.WriteLine($"{array[i]}] ");
+        else Console.Write($"{array[i]}] ");
     }
     result = Math.Round(result, sign);
     Console.WriteLine($"разница между максимальным и минимальным значением элемента массива состовляет {result}");
