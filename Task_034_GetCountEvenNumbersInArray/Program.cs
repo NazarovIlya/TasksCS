@@ -1,5 +1,6 @@
-﻿// Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
-// [345, 897, 568, 234] -> 2
+﻿// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
 
 Console.WriteLine("Введите количество трехзначных чисел: ");
 int num = Convert.ToInt32(Console.ReadLine());
@@ -23,7 +24,7 @@ int GetCountEvenNumbers(int[] array)
     int evenCount = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        if (i % 2 == 0)
+        if (i % 2 == 1)
             evenCount++;
     }
     return evenCount;
@@ -46,10 +47,10 @@ void PrintResult(int[] array, int result)
     Console.Write("В массиве: ");
     PrintArray(arr);
     if (result == 1)
-        Console.Write($"находится {result} четное число");
+        Console.Write($"находится {result} нечетная позиция");
     else if (result > 1 && result < 5 || (result % 10) > 1 && (result % 10) > 5)
-        Console.Write($"находится {result} четных числа");
-    else Console.Write($"находится {result} четных чисел");
+        Console.Write($"находится {result} нечетных позиции");
+    else Console.Write($"находится {result} нечетных позиций");
 }
 
 
