@@ -3,7 +3,7 @@
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("");
 int num = Convert.ToInt32(Console.ReadLine());
 
 int[] FillArray(int arrayLength)
