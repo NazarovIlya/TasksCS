@@ -33,10 +33,11 @@ int GetArrayLength(int[] array)
 int[] GetProductArrayPair(int[] array, int arrayLength)
 {
     int[] newArray = new int[arrayLength];
-    for (int i = 0; i < arrayLength; i++)
+    for (int i = 0; i < arrayLength - 1; i++)
     {
         newArray[i] = array[i] * array[array.Length - i - 1];
     }
+    if (array.Length % 2 == 1) newArray[newArray.Length - 1] = array[array.Length / 2];
     return newArray;
 }
 
