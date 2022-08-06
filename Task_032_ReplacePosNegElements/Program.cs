@@ -24,8 +24,9 @@ int[] ArrayNegative(int[] array, int size)
     }
     return arrayNegative;
 }
-void PrintArray(int[] array)
+void PrintArray(int[] array, string outputText)
 {
+    Console.WriteLine(outputText);
     Console.Write("[");
     for (int i = 0; i < array.Length; i++)
     {
@@ -38,5 +39,5 @@ void PrintArray(int[] array)
 
 int[] arr = FillArrayRandom(6, -10, 11);
 int[] newArr = ArrayNegative(arr, arr.Length);
-PrintArray(arr);
-PrintArray(newArr);
+PrintArray(arr, "Исходный массив: ");
+PrintArray(newArr, "Массив со значениями, измененными по модулю: ");
