@@ -7,11 +7,6 @@ string[] GetUserInputInt(string userInputStr)
 {
     Console.WriteLine(userInputStr);
     string[] strArray = Console.ReadLine().Split(",");
-    // int[] array = new int[str.Length];
-    // for (int i = 0; i < str.Length; i++)
-    // {
-    //     array[i] = Convert.ToInt32(str[i]);
-    // }
     return strArray;
 }
 
