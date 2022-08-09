@@ -18,9 +18,14 @@ int GetUserInputInt(string userInputStr)
     return number;
 }
 
+int[] CheckLineIntersection(int angularK1, int intersectionY1, int angularK2, int intersectionY2)
+{
+
+}
+
 
 Console.Clear();
-int numB1 = GetUserInputInt();
-int numK1 = GetUserInputInt();
-int numB2 = GetUserInputInt();
-int numK2 = GetUserInputInt();
+int numA = GetUserInputInt("Введите угловой коэфициент для первой функции: ");
+int numC = GetUserInputInt("Введите точку пересечения с осью y для первой функции: ");
+int numB = GetUserInputInt("Введите угловой коэфициент для первой функции: ");
+int numВ = GetUserInputInt("Введите точку пересечения с осью y для второй функции: ");
