@@ -18,37 +18,33 @@ int GetUserInputInt(string userInputStr)
     return number;
 }
 
-void CheckLineIntersection(int angularK1, int intersectionY1, int angularK2, int intersectionY2)
+double[] FindIntersectionPoint(double angularK1, double intersectionY1, double angularK2, double intersectionY2)
 {
-    if ((angularK1 == angularK2) && (intersectionY1 == intersectionY2))
-        Console.WriteLine("Прямые совпадают.");
-    else if ((angularK1 == angularK2) && (intersectionY1 != intersectionY2))
-        Console.WriteLine("Прямые параллельны.");
-    else
-        Console.WriteLine("Прямые пересекаются.");
-}
-
-double[] FindIntersectionPoint(int angularK1, int intersectionY1, int angularK2, int intersectionY2)
-{
-    double x = Convert.ToDouble((intersectionY2 - intersectionY1)) / Convert.ToDouble((angularK1 - angularK2));
-    double y = Convert.ToDouble((angularK1 * intersectionY2) - Convert.ToDouble(angularK2 * intersectionY1)) / (angularK1 - angularK2);
+    double x = (intersectionY2 - intersectionY1) / (angularK1 - angularK2);
+    double y = ((angularK1 * intersectionY2) - (angularK2 * intersectionY1)) / (angularK1 - angularK2);
     double[] coordArr = new double[2];
     coordArr[0] = x;
     coordArr[1] = y;
     return coordArr;
 }
 
-void PrintResult(double[] array)
+void CheckLineIntersection(double angularK1, double intersectionY1, double angularK2, double intersectionY2, double[] arrayCoord)
 {
-    Console.WriteLine($"Координаты точки пересечения: {array[0]}, {array[1]}");
+    if ((angularK1 == angularK2) && (intersectionY1 == intersectionY2))
+        Console.WriteLine("Прямые совпадают.");
+    else if ((angularK1 == angularK2) && (intersectionY1 != intersectionY2))
+        Console.WriteLine("Прямые параллельны.");
+    else
+    {
+        Console.WriteLine("Прямые пересекаются.");
+        Console.WriteLine($"Координаты точки пересечения: {arrayCoord[0]}, {arrayCoord[1]}");
+    }
 }
 
-
 Console.Clear();
-int numA = GetUserInputInt("Введите угловой коэфициент для первой функции: ");
-int numC = GetUserInputInt("Введите точку пересечения с осью y для первой функции: ");
-int numB = GetUserInputInt("Введите угловой коэфициент для второй функции: ");
-int numD = GetUserInputInt("Введите точку пересечения с осью y для второй функции: ");
-CheckLineIntersection(numA, numC, numB, numD);
+double numA = GetUserInputInt("Введите угловой коэфициент для первой функции: ");
+double numC = GetUserInputInt("Введите точку пересечения с осью y для первой функции: ");
+double numB = GetUserInputInt("Введите угловой коэфициент для второй функции: ");
+double numD = GetUserInputInt("Введите точку пересечения с осью y для второй функции: ");
 double[] coord = FindIntersectionPoint(numA, numC, numB, numD);
-PrintResult(coord);
+CheckLineIntersection(numA, numC, numB, numD, coord);
