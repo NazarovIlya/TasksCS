@@ -49,7 +49,7 @@ void PrintArray(int[] array, string preOutputText, string postOutputText)
 }
 
 
-//Console.Clear();
+Console.Clear();
 string[] stringNumM = GetUserInputInt("Введите числа, разделяя их запятой: ");
 int[] numM = ConvertArrayStrToInt(stringNumM);
 int countPosNumM = GetCountNumbersOverNull(numM);
