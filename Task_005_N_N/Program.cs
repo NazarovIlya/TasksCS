@@ -10,6 +10,11 @@ int i;
 i = -N;
 while (i <= N)
 {
-    Console.Write($"{i} ");
-    i++;
+    if (i % 2 == 0)
+    {
+        Console.Write($"{i} ");
+        i++;
+    }
+    else
+        i++;
 }
