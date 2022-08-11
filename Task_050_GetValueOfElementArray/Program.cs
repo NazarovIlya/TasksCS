@@ -7,7 +7,7 @@
 // 8 4 2 4
 // 17 -> такого числа в массиве нет
 
-int[] GetUserInputNubersInt(string userInputNumberString)
+int[] GetUserInputNumbersInt(string userInputNumberString)
 {
     Console.WriteLine(userInputNumberString);
     string[] stringArray = Console.ReadLine().Split(",");
@@ -67,9 +67,9 @@ void PrintResult(int[] array, int[,] matrix)
 }
 
 Console.Clear();
-int[] RowColum = GetUserInputNubersInt("Введите количество строк и столбцов массива через запятую: ");
+int[] RowColum = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
 int[,] matrix = new int[RowColum[0], RowColum[1]];
-int[] array = GetUserInputNubersInt("Введите номер строки и стобца интересующего Вас элемента матрицы через запятую: ");
+int[] array = GetUserInputNumbersInt("Введите номер строки и стобца интересующего Вас элемента матрицы через запятую: ");
 FillMatrixTwoDimensionalInt(matrix, -10, 10);
 PrintMatrixTwoDimensional(matrix);
 PrintResult(array, matrix);
