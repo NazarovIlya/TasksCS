@@ -12,27 +12,31 @@ int GetUserInputInt(string userInputString)
     return number;
 }
 
-int GetOrder(int numberOrder)
+int GetOrder(int orderValue)
 {
     int resOrder = 1;
-    for (int i = 0; i < numberOrder; i++)
+    for (int i = 0; i < orderValue; i++)
     {
         resOrder = resOrder * 10;
     }
     return resOrder;
 }
 
-void FillMatrixTwoDimensionalDouble(double[,] matrixTwoDimensional, int orderValue)
+void FillMatrixTwoDimensionalDouble(double[,] matrixTwoDimensional,
+                                    int orderValue, int signsAfterDot)
 {
     Random random = new Random();
+    Random randomNumberModule = new Random();
     for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
     {
         for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
         {
-            double result = random.NextDouble() * numberOrder;
-            matrixTwoDimensional[i, j] = result;
+            int module = randomNumberModule.Next(0, 2);
+            double result = random.NextDouble() * orderValue;
+            if (module == 0)
+                matrixTwoDimensional[i, j] = Math.Round(result, signsAfterDot);
+            else matrixTwoDimensional[i, j] = Math.Round(-result, signsAfterDot);
         }
-
     }
 }
 
@@ -53,10 +57,9 @@ void PrintMatrixTwoDimensional(double[,] matrixTwoDimensional)
 Console.Clear();
 int nRows = GetUserInputInt("Введите количество строк массива: ");
 int nColumns = GetUserInputInt("Введите количество столбцов массива: ");
-int minValue = GetUserInputInt("Введите значение нижней границы Random-интервала: ");
-int maxValue = GetUserInputInt("Введите значение верхней границы Random-интервала: ");
-int order = GetUserInputInt("Введите максимальный порядок чисел массива: ");
+int order = GetUserInputInt("Введите основной порядок чисел массива: ");
+int signs = GetUserInputInt("Введите желаемую точность числа: ");
 double[,] matrix = new double[nRows, nColumns];
-int orderValue = GetOrder();
-FillMatrixTwoDimensionalDouble(matrix, orderValue, minValue, maxValue);
+int orderValue = GetOrder(order);
+FillMatrixTwoDimensionalDouble(matrix, orderValue, signs);
 PrintMatrixTwoDimensional(matrix);
