@@ -36,3 +36,4 @@ void FillMatrixTwoDimensionalInt(int[,] matrixTwoDimensional,
 // TO DO: Console.Clear();
 int[] RowColum = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
 int[,] matrix = new int[RowColum[0], RowColum[1]];
+FillMatrixTwoDimensionalInt();
