@@ -22,7 +22,7 @@ double[] FillArray(int arrayLength, int order, int signsAfterDot)
     return array;
 }
 
-int GetOrder(int numberOrder = 1)
+int GetOrder(int numberOrder)
 {
     int resOrder = 1;
     for (int i = 0; i < numberOrder; i++)
