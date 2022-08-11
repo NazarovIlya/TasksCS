@@ -3,19 +3,19 @@
 // 0, 7, 8, -2, -2 -> 2
 // -1, -7, 567, 89, 223-> 3
 
-string[] GetUserInputInt(string userInputStr)
+string[] GetUserInputNumberString(string userInputNumberString)
 {
-    Console.WriteLine(userInputStr);
+    Console.WriteLine(userInputNumberString);
     string[] strArray = Console.ReadLine().Split(",");
     return strArray;
 }
 
-int[] ConvertArrayStrToInt(string[] strArray)
+int[] ConvertArrayStrToInt(string[] stringArray)
 {
-    int[] array = new int[strArray.Length];
-    for (int i = 0; i < strArray.Length; i++)
+    int[] array = new int[stringArray.Length];
+    for (int i = 0; i < stringArray.Length; i++)
     {
-        array[i] = Convert.ToInt32(strArray[i]);
+        array[i] = Convert.ToInt32(stringArray[i]);
     }
     return array;
 }
@@ -45,7 +45,7 @@ void PrintArray(int[] array, string preOutputText, string postOutputText)
 
 
 Console.Clear();
-string[] stringNumM = GetUserInputInt("Введите числа, разделяя их запятой: ");
+string[] stringNumM = GetUserInputNumberString("Введите числа, разделяя их запятой: ");
 int[] numM = ConvertArrayStrToInt(stringNumM);
 int countPosNumM = GetCountNumbersOverNull(numM);
 PrintArray(numM, "Получившейся массив: ", $"содержит {numM.Length} элементов, из которых {countPosNumM} положительных");
