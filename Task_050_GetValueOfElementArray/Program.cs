@@ -67,8 +67,6 @@ void PrintResult(int[] array, int[,] matrix)
 }
 
 Console.Clear();
-// int nRows = GetUserInputInt("Введите количество строк массива: ");
-// int nColumns = GetUserInputInt("Введите количество столбцов массива: ");
 int[] RowColum = GetUserInputNubersInt("Введите количество строк и столбцов массива через запятую: ");
 int[,] matrix = new int[RowColum[0], RowColum[1]];
 int[] array = GetUserInputNubersInt("Введите номер строки и стобца интересующего Вас элемента матрицы через запятую: ");
