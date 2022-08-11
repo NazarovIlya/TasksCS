@@ -19,6 +19,20 @@ int[] GetUserInputNumbersInt(string userInputNumberString)
     return numberArray;
 }
 
+void FillMatrixTwoDimensionalInt(int[,] matrixTwoDimensional,
+                                int minIntervalValue, int maxIntervalValue)
+{
+    Random randomDouble = new Random();
+    for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
+        {
+            matrixTwoDimensional[i, j] = randomDouble.Next(minIntervalValue, maxIntervalValue);
+        }
+    }
+}
+
 
 // TO DO: Console.Clear();
 int[] RowColum = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
+int[,] matrix = new int[RowColum[0], RowColum[1]];
