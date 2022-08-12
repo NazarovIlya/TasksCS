@@ -75,7 +75,7 @@ void PrintSumArray(int[] array, string preOutputText, string postOutputText)
 
 Console.Clear();
 int[] RowColum = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
-int[] arrayIntervalMinMax = GetUserInputNumbersInt("Введите интервал значений массива: ");
+int[] arrayIntervalMinMax = GetUserInputNumbersInt("Введите интервал значений массива через запятую: ");
 int[,] matrix = new int[RowColum[0], RowColum[1]];
 Console.WriteLine();    // an empty line to separate the output of blocks of results
 FillMatrixTwoDimensionalInt(matrix, arrayIntervalMinMax[0], arrayIntervalMinMax[1]);
