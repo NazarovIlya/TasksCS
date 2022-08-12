@@ -48,7 +48,7 @@ void PrintMatrixTwoDimensional(int[,] matrixTwoDimensional, string userOutputStr
 }
 
 
-//Console.Clear();
+Console.Clear();
 int[] matrixSize = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
 int[,] matrixProductRowColumn = new int[matrixSize[0], matrixSize[1]];
 FillMatrixTwoDimension(matrixProductRowColumn);
