@@ -32,20 +32,33 @@ void FillMatrixTwoDimensionalInt(int[,] matrixTwoDimensional,
     }
 }
 
-int[] GetSumNumbersArray(int[,] matrixTwoDimension)
+int[] GetSumColumnNumbersArray(int[,] matrixTwoDimension)
 {
-    int sum = 0;
     int[] arraySum = new int[matrixTwoDimension.GetLength(1)];
     for (int i = 0; i < matrixTwoDimension.GetLength(0); i++)
     {
+        int sum = 0;
         for (int j = 0; j < matrixTwoDimension.GetLength(1); j++)
         {
             sum += matrixTwoDimension[i, j];
+            arraySum[j] = sum;
         }
-        arraySum[i] = sum;
-        Console.WriteLine(sum);
     }
     return arraySum;
+}
+
+void PrintMatrixTwoDimensional(int[,] matrixTwoDimensional)
+{
+    for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
+        {
+            if (matrixTwoDimensional[i, j] >= 0)
+                Console.Write($" {matrixTwoDimensional[i, j]}    ");
+            else Console.Write($"{matrixTwoDimensional[i, j]}    ");
+        }
+        Console.WriteLine();
+    }
 }
 
 
@@ -54,3 +67,6 @@ int[] RowColum = GetUserInputNumbersInt("Введите количество с�
 int[] arrayIntervalMinMax = GetUserInputNumbersInt("Введите интервал значений массива: ");
 int[,] matrix = new int[RowColum[0], RowColum[1]];
 FillMatrixTwoDimensionalInt(matrix, arrayIntervalMinMax[0], arrayIntervalMinMax[1]);
+PrintMatrixTwoDimensional(matrix);
+int[] sumArray = GetSumColumnNumbersArray(matrix);
+Console.Write(sumArray);
