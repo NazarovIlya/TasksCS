@@ -53,9 +53,10 @@ void PrintResult(int[] array, int[,] matrix)
     while (i < array.Length)
     {
         if (array[i] < matrix.GetLength(0) + 1
-            && array[i] < matrix.GetLength(1) + 1)
+            && array[i] < matrix.GetLength(1) + 1
+            && array[i] > 0)
         {
-            Console.WriteLine($"Значение {j} интересующего Вас элемента: {matrix[array[i] - 1, array[i + 1] - 1]}");
+            Console.WriteLine($"Значение {j}го (позиция {array[i]}, {array[i + 1]}) интересующего Вас элемента: {matrix[array[i] - 1, array[i + 1] - 1]}");
         }
         else
         {
@@ -68,7 +69,7 @@ void PrintResult(int[] array, int[,] matrix)
 
 Console.Clear();
 int[] RowColum = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
-int[] arrayInteralMinMax = GetUserInputNumbersInt("В интервал значений массива: ");
+int[] arrayInteralMinMax = GetUserInputNumbersInt("Введите интервал значений массива: ");
 int[,] matrix = new int[RowColum[0], RowColum[1]];
 int[] arrayRowColumn = GetUserInputNumbersInt("Введите номер строки и стобца интересующего Вас элемента матрицы через запятую: ");
 FillMatrixTwoDimensionalInt(matrix, arrayInteralMinMax[0], arrayInteralMinMax[1]);

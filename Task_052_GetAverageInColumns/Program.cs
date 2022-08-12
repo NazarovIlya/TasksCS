@@ -35,21 +35,22 @@ void FillMatrixTwoDimensionalInt(int[,] matrixTwoDimensional,
 int[] GetSumNumbersArray(int[,] matrixTwoDimension)
 {
     int sum = 0;
-    int[] array = new int[matrixTwoDimension.GetLength(1)];
+    int[] arraySum = new int[matrixTwoDimension.GetLength(1)];
     for (int i = 0; i < matrixTwoDimension.GetLength(0); i++)
     {
-        for (int j = 0; j < matrixTwoDimension(1); j++)
+        for (int j = 0; j < matrixTwoDimension.GetLength(1); j++)
         {
-            sum += array[i, j];
+            sum += matrixTwoDimension[i, j];
         }
-        array[i] = sum;
+        arraySum[i] = sum;
         Console.WriteLine(sum);
     }
-    return sum;
+    return arraySum;
 }
 
 
 // TO DO: Console.Clear();
 int[] RowColum = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
+int[] arrayIntervalMinMax = GetUserInputNumbersInt("Введите интервал значений массива: ");
 int[,] matrix = new int[RowColum[0], RowColum[1]];
-FillMatrixTwoDimensionalInt();
+FillMatrixTwoDimensionalInt(matrix, arrayIntervalMinMax[0], arrayIntervalMinMax[1]);
