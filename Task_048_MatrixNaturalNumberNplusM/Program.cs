@@ -17,3 +17,40 @@ int[] GetUserInputNumbersInt(string userInputNumberString)
     }
     return numberArray;
 }
+
+void FillMatrixTwoDimension(int[,] matrixTwoDimensional)
+{
+    Random random = new Random();
+    for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
+        {
+            matrixTwoDimensional[i, j] = i + j;
+        }
+    }
+}
+
+void PrintMatrixTwoDimensional(int[,] matrixTwoDimensional, string userOutputString)
+{
+    Console.WriteLine(userOutputString);
+    for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
+    {
+        Console.Write("[ ");
+        for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
+        {
+            if (matrixTwoDimensional[i, j] >= 0)
+                Console.Write($" {matrixTwoDimensional[i, j]} ");
+            else Console.Write($"{matrixTwoDimensional[i, j]} ");
+        }
+        Console.Write(" ]");
+        Console.WriteLine();
+    }
+}
+
+
+//Console.Clear();
+int[] matrixSize = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
+int[,] matrixProductRowColumn = new int[matrixSize[0], matrixSize[1]];
+FillMatrixTwoDimension(matrixProductRowColumn);
+PrintMatrixTwoDimensional(matrixProductRowColumn, "Матирца содержит элементы, получившиеся после сложения их индексов: ");
+
