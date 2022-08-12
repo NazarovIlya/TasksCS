@@ -73,7 +73,7 @@ Console.Clear();
 int[] RowColum = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
 int[] arrayInteralMinMax = GetUserInputNumbersInt("Введите интервал значений массива: ");
 int[,] matrix = new int[RowColum[0], RowColum[1]];
-int[] arrayRowColumn = GetUserInputNumbersInt("Введите номер строки и стобца интересующего Вас элемента матрицы через запятую: ");
 FillMatrixTwoDimensionalInt(matrix, arrayInteralMinMax[0], arrayInteralMinMax[1]);
 PrintMatrixTwoDimensional(matrix);
+int[] arrayRowColumn = GetUserInputNumbersInt("Введите номер строки и стобца интересующего Вас элемента матрицы через запятую: ");
 PrintResult(arrayRowColumn, matrix);
