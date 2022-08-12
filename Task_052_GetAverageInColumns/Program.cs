@@ -66,14 +66,15 @@ void PrintMatrixTwoDimensional(int[,] matrixTwoDimensional)
     }
 }
 
-void PrintSumArray(double[] array, string preOutputText, string postOutputText)
+void PrintAverageArray(double[] array, string preOutputText, string postOutputText)
 {
     Console.WriteLine(preOutputText);
+    Console.Write($"|| ");
     for (int i = 0; i < array.Length; i++)
     {
         if (i < array.Length - 1)
-            Console.Write($"{array[i]} | ");
-        else Console.Write($"{array[i]} | ");
+            Console.Write($"{array[i]};  ");
+        else Console.Write($"{array[i]} ||");
     }
     Console.WriteLine(postOutputText);
 }
@@ -87,4 +88,4 @@ FillMatrixTwoDimensionalInt(matrix, arrayIntervalMinMax[0], arrayIntervalMinMax[
 PrintMatrixTwoDimensional(matrix);
 double[] averageArray = GetAverageColumnNumbersArray(matrix, 2);
 Console.WriteLine();    // an empty line to separate the output of blocks of results
-PrintSumArray(averageArray, "Среднее арифметическое всех чисел в каждом столбце массива: ", "");
+PrintAverageArray(averageArray, "Среднее арифметическое всех чисел в каждом столбце массива: ", "");
