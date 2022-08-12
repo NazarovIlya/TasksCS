@@ -12,6 +12,18 @@ int GetUserInputInt(string userInputString)
     return number;
 }
 
+int[] GetUserInputNumbersInt(string userInputNumberString)
+{
+    Console.WriteLine(userInputNumberString);
+    string[] stringArray = Console.ReadLine().Split(",");
+    int[] numberArray = new int[stringArray.Length];
+    for (int i = 0; i < numberArray.Length; i++)
+    {
+        numberArray[i] = Convert.ToInt32(stringArray[i]);
+    }
+    return numberArray;
+}
+
 int GetOrder(int orderValue)
 {
     int resOrder = 1;
@@ -44,22 +56,24 @@ void PrintMatrixTwoDimensional(double[,] matrixTwoDimensional)
 {
     for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
     {
+        Console.Write("[ ");
         for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
         {
             if (matrixTwoDimensional[i, j] >= 0)
                 Console.Write($" {matrixTwoDimensional[i, j]} ");
             else Console.Write($"{matrixTwoDimensional[i, j]} ");
         }
+        Console.Write(" ]");
         Console.WriteLine();
     }
 }
 
 Console.Clear();
-int nRows = GetUserInputInt("Введите количество строк массива: ");
-int nColumns = GetUserInputInt("Введите количество столбцов массива: ");
+int[] nRowsColumns = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
+//int nColumns = GetUserInputInt("Введите количество  массива: ");
 int order = GetUserInputInt("Введите основной порядок чисел массива: ");
 int signs = GetUserInputInt("Введите желаемую точность числа: ");
-double[,] matrix = new double[nRows, nColumns];
+double[,] matrix = new double[nRowsColumns[0], nRowsColumns[1]];
 int orderValue = GetOrder(order);
 FillMatrixTwoDimensionalDouble(matrix, orderValue, signs);
 PrintMatrixTwoDimensional(matrix);
