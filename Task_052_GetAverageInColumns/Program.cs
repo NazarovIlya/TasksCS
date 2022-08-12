@@ -32,42 +32,47 @@ void FillMatrixTwoDimensionalInt(int[,] matrixTwoDimensional,
     }
 }
 
-int[] GetSumColumnNumbersArray(int[,] matrixTwoDimension)
+double[] GetAverageColumnNumbersArray(int[,] matrixTwoDimension, int signsAfterDot)
 {
-    int[] arraySum = new int[matrixTwoDimension.GetLength(1)];
+    double[] arrayAverage = new double[matrixTwoDimension.GetLength(1)];
     for (int i = 0; i < matrixTwoDimension.GetLength(1); i++)
     {
-        int sum = 0;
+        double sum = 0;
         for (int j = 0; j < matrixTwoDimension.GetLength(0); j++)
         {
             sum += matrixTwoDimension[j, i];
-            arraySum[i] = sum;
         }
+        double average = sum / matrixTwoDimension.GetLength(1);
+        arrayAverage[i] = Math.Round(average, signsAfterDot);
     }
-    return arraySum;
+    return arrayAverage;
 }
 
 void PrintMatrixTwoDimensional(int[,] matrixTwoDimensional)
 {
     for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
     {
+        Console.Write("[  ");
         for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
         {
+
             if (matrixTwoDimensional[i, j] >= 0)
-                Console.Write($" {matrixTwoDimensional[i, j]}    ");
-            else Console.Write($"{matrixTwoDimensional[i, j]}    ");
+                Console.Write($" {matrixTwoDimensional[i, j]}   ");
+            else Console.Write($"{matrixTwoDimensional[i, j]}   ");
+            //Console.Write("]");
         }
+        Console.Write("]");
         Console.WriteLine();
     }
 }
 
-void PrintSumArray(int[] array, string preOutputText, string postOutputText)
+void PrintSumArray(double[] array, string preOutputText, string postOutputText)
 {
     Console.WriteLine(preOutputText);
     for (int i = 0; i < array.Length; i++)
     {
         if (i < array.Length - 1)
-            Console.Write($" {array[i]}  | ");
+            Console.Write($"{array[i]} | ");
         else Console.Write($"{array[i]} | ");
     }
     Console.WriteLine(postOutputText);
@@ -80,6 +85,6 @@ int[,] matrix = new int[RowColum[0], RowColum[1]];
 Console.WriteLine();    // an empty line to separate the output of blocks of results
 FillMatrixTwoDimensionalInt(matrix, arrayIntervalMinMax[0], arrayIntervalMinMax[1]);
 PrintMatrixTwoDimensional(matrix);
-int[] sumArray = GetSumColumnNumbersArray(matrix);
+double[] averageArray = GetAverageColumnNumbersArray(matrix, 2);
 Console.WriteLine();    // an empty line to separate the output of blocks of results
-PrintSumArray(sumArray, "Сумма чисел в каждом столбце массива: ", "");
+PrintSumArray(averageArray, "Среднее арифметическое всех чисел в каждом столбце массива: ", "");
