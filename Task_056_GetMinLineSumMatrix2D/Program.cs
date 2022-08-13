@@ -37,15 +37,24 @@ void FillMatrix2DInt(int[,] matrix, int min, int max)
     }
 }
 
-void GetMinSumLineMatrix2D(int[,] matrix2D)
+int GetMinSumLineMatrix2D(int[,] matrix2D)
 {
+    int line = 0;
+    int[] sumArray = new int[matrix2D.GetLength(0)];
     for (int i = 0; i < matrix2D.GetLength(0); i++)
     {
+        int sum = 0;
         for (int j = 0; j < matrix2D.GetLength(1); j++)
         {
-
+            sum += matrix2D[i, j];
+        }
+        sumArray[i] = sum;
+        for (int k = 0; k < sumArray.Length; k++)
+        {
+            if (sumArray[i] < sumArray[k]) line = i;
         }
     }
+    return line;
 }
 
 void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
@@ -67,3 +76,10 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 
 
 //Console.Clear();
+int[] matrixSize = GetUserInputNumbersInt("Введите размер матрицы (n строк,n столбцов): ");
+int[] matrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую): ");
+int[,] matrix = new int[matrixSize[0], matrixSize[1]];
+FillMatrix2DInt(matrix, matrixMinMax[0], matrixMinMax[1]);
+PrintMatrix2DInt(matrix, "Задан массив: ");
+int result = GetMinSumLineMatrix2D(matrix);
+Console.WriteLine($"Наименьшая сумма значений всех элементов в {result} строке (машинное исчисление от нуля).");
