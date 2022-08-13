@@ -41,13 +41,51 @@ void FillMatrix2DInt(int[,] matrix, int min, int max)
     }
 }
 
+void SortLineElementsMatrix2D(int[,] matrix2D)
+{
+    int minValue = matrix2D[0, 0];
+    for (int i = 0; i < matrix2D.GetLength(0); i++)
+    {
+        int minPosI = i;
+        for (int j = 0; j < matrix2D.GetLength(1); j++)
+        {
+            int minPosJ = j;
+            for (int k = j + 1; k < matrix2D.GetLength(1); k++)
+            {
+                if (matrix2D[i, j] < matrix2D[i, minPosJ]) minPosJ = k;
+            }
+            int temp = matrix2D[i, j];
+            matrix2D[i, j] = matrix2D[i, minPosJ];
+            matrix2D[i, minPosJ] = temp;
 
+            Console.Write($"{matrix2D[i, minPosJ]} ");
+        }
+    }
+}
 
-
+void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
+{
+    Console.WriteLine(userOutputString);
+    for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
+    {
+        Console.Write("[ ");
+        for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
+        {
+            if (matrixTwoDimensional[i, j] >= 0)
+                Console.Write($" {matrixTwoDimensional[i, j]} ");
+            else Console.Write($"{matrixTwoDimensional[i, j]} ");
+        }
+        Console.Write(" ]");
+        Console.WriteLine();
+    }
+}
 
 
 //Console.Clear();
 int[] matrixSize = GetUserInputNumbersInt("Введите размер матрицы (n строк,n столбцов): ");
-int[,] matrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую): ");
-int[,] matrixToSort = new int[matrixMinMax[0], matrixMinMax[1]];
-FillMatrix2DInt(matrixToSort);
+int[] matrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую): ");
+int[,] matrixToSort = new int[matrixSize[0], matrixSize[1]];
+FillMatrix2DInt(matrixToSort, matrixMinMax[0], matrixMinMax[1]);
+PrintMatrix2DInt(matrixToSort, "Исходный массив: ");
+SortLineElementsMatrix2D(matrixToSort);
+PrintMatrix2DInt(matrixToSort, "Массив после сортировки: ");

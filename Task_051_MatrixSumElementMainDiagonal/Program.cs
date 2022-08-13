@@ -14,7 +14,13 @@ int[] GetUserInputNumbersInt(string userInputNumberString)
     int[] numberArray = new int[stringArray.Length];
     for (int i = 0; i < numberArray.Length; i++)
     {
-        numberArray[i] = Convert.ToInt32(stringArray[i]);
+        if (stringArray[i] == "" || stringArray[i] == " "
+            || Convert.ToInt32(stringArray[i]) == null)
+        {
+            Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
+            Environment.Exit(0);
+        }
+        else numberArray[i] = Convert.ToInt32(stringArray[i]);
     }
     return numberArray;
 }
@@ -44,6 +50,20 @@ int GetMatrixSumElementMainDiagonal(int[,] matrixTwoDimensional)
     }
     return sum;
 }
+int GetMatrixSumElementMainDiagonalOptimized(int[,] matrixTwoDimensional)
+{
+    int sum = 0;
+    int length = 0;
+    if (matrixTwoDimensional.GetLength(0) <= matrixTwoDimensional.GetLength(1))
+        length = matrixTwoDimensional.GetLength(0);
+    else
+        length = matrixTwoDimensional.GetLength(1);
+    for (int i = 0; i < length; i++)
+    {
+        sum += matrixTwoDimensional[i, i];
+    }
+    return sum;
+}
 
 void PrintMatrixTwoDimensional(int[,] matrixTwoDimensional, string userOutputString)
 {
@@ -66,10 +86,12 @@ void PrintMatrixTwoDimensional(int[,] matrixTwoDimensional, string userOutputStr
 Console.Clear();
 int[] matrixSize = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
 int[] matrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел: ");
-int[,] matrixProductRowColumn = new int[matrixSize[0], matrixSize[1]];
-FillMatrixTwoDimension(matrixProductRowColumn, matrixMinMax[0], matrixMinMax[1]);
-PrintMatrixTwoDimensional(matrixProductRowColumn, "Исходная матрица: ");
-int result = GetMatrixSumElementMainDiagonal(matrixProductRowColumn);
-Console.WriteLine($"{result}");
+int[,] matrixSumRowColumn = new int[matrixSize[0], matrixSize[1]];
+FillMatrixTwoDimension(matrixSumRowColumn, matrixMinMax[0], matrixMinMax[1]);
+PrintMatrixTwoDimensional(matrixSumRowColumn, "Исходная матрица: ");
+int result = GetMatrixSumElementMainDiagonal(matrixSumRowColumn);
+Console.WriteLine($"Сумма элементов массива по главной диагонали {result}");
+int resultOpt = GetMatrixSumElementMainDiagonalOptimized(matrixSumRowColumn);
+Console.WriteLine($"Сумма элементов массива по главной диагонали (оптимизированный алгоритм): {resultOpt}");
 
 
