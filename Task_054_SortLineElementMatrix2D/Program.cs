@@ -18,11 +18,27 @@ int[] GetUserInputNumbersInt(string userInputNumberString)
     int[] numberArray = new int[stringArray.Length];
     for (int i = 0; i < numberArray.Length; i++)
     {
+        if (stringArray[i] == "" || Convert.ToInt32(stringArray[i]) == null)
+        {
+            Console.WriteLine("Ошибка ввода данных.");
+            break;
+        }
         numberArray[i] = Convert.ToInt32(stringArray[i]);
     }
     return numberArray;
 }
 
+void FillMatrix2DInt(int[,] matrix, int min, int max)
+{
+    Random random = new Random();
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i, j] = random.Next(min, max);
+        }
+    }
+}
 
 
 
@@ -31,3 +47,6 @@ int[] GetUserInputNumbersInt(string userInputNumberString)
 
 //Console.Clear();
 int[] matrixSize = GetUserInputNumbersInt("Введите размер матрицы (n строк,n столбцов): ");
+int[,] matrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую): ");
+int[,] matrixToSort = new int[matrixMinMax[0], matrixMinMax[1]];
+FillMatrix2DInt(matrixToSort);
