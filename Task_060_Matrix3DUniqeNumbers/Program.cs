@@ -37,7 +37,24 @@ int[] ConvertUserInputNumbersInt(string[] userNumberString)
     return userNumberInt;
 }
 
-void FillMatrix3DInt(int[,,] matrix3D, int min, int max)
+int GetMatrix3DSize(int[,,] matrix3D)
+{
+    int matrix3DSize = 0;
+    return matrix3DSize = matrix3D.GetLength(0)
+                        * matrix3D.GetLength(1)
+                        * matrix3D.GetLength(2);
+}
+
+int GetUniqeRandom(int numberMatrix3DElement, int minRandom, int maxRandom)
+{
+    int randomNumber = 0;
+    Random random = new Random();
+    int[] arrayRandom = new int[numberMatrix3DElement];
+
+    return randomNumber;
+}
+
+void FillMatrixRandom3DInt(int[,,] matrix3D, int min, int max)
 {
     Random random = new Random();
     for (int i = 0; i < matrix3D.GetLength(0); i++)
@@ -46,7 +63,7 @@ void FillMatrix3DInt(int[,,] matrix3D, int min, int max)
         {
             for (int k = 0; k < matrix3D.GetLength(2); k++)
             {
-                // matrix3D[i, j, k] = random.Next(min, max);
+                matrix3D[i, j, k] = random.Next(random.Next(10, 50) + random.Next(10, 50));
             }
         }
     }
@@ -81,5 +98,6 @@ string[] intervalMinMaxString = GetUserInputNumbersString("Введите гра
 intervalMinMaxString = CheckUserInputToInt(intervalMinMaxString);
 int[] intervalMinMaxInt = ConvertUserInputNumbersInt(intervalMinMaxString);
 int[,,] matrix3D = new int[matrixSizeInt[0], matrixSizeInt[1], matrixSizeInt[2]];
-FillMatrix3DInt(matrix3D, intervalMinMaxInt[0], intervalMinMaxInt[1]);
+FillMatrixRandom3DInt(matrix3D, intervalMinMaxInt[0], intervalMinMaxInt[1]);
+int countMatrix3DElement = GetMatrix3DSize(matrix3D);
 PrintMatrix3DInt(matrix3D, "Полученный массив: ");
