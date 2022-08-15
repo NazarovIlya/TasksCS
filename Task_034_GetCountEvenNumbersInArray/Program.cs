@@ -1,12 +1,6 @@
 ﻿// Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
 
-Console.WriteLine("Введите количество трехзначных чисел: ");
-int num = Convert.ToInt32(Console.ReadLine());
-int[] arr = FillArray(num);
-int res = GetCountEvenNumbers(arr);
-PrintResult(arr, res);
-
 int[] FillArray(int arrayLength)
 {
     int[] array = new int[arrayLength];
@@ -44,7 +38,7 @@ void PrintArray(int[] array)
 void PrintResult(int[] array, int result)
 {
     Console.Write("В массиве: ");
-    PrintArray(arr);
+    PrintArray(array);
     if (result == 1)
         Console.Write($"находится {result} четное число");
     else if (result > 1 && result < 5 || (result % 10) > 1 && (result % 10) > 5)
@@ -53,3 +47,8 @@ void PrintResult(int[] array, int result)
 }
 
 
+Console.WriteLine("Введите количество трехзначных чисел: ");
+int num = Convert.ToInt32(Console.ReadLine());
+int[] array = FillArray(num);
+int res = GetCountEvenNumbers(array);
+PrintResult(array, res);
