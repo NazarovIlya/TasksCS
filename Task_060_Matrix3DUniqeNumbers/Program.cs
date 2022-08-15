@@ -45,25 +45,46 @@ int GetMatrix3DSize(int[,,] matrix3D)
                         * matrix3D.GetLength(2);
 }
 
-int GetUniqeRandom(int numberMatrix3DElement, int minRandom, int maxRandom)
+void CheckUserMatrixSize(int matrix3DSize, int min, int max)
+{
+    int intervalSize = max - min;
+    if (intervalSize < matrix3DSize)
+    {
+        Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
+        Console.WriteLine($"Количество чисел интервала не может быть менее {intervalSize + 1} при заданных Вами размерах матрицы. Необходим больший интервал или меньшие размеры массива: ");
+        Environment.Exit(0);
+    }
+}
+
+int[] GetUniqeRandomArray(int matrix3DSize, int minRandom, int maxRandom)
 {
     int randomNumber = 0;
     Random random = new Random();
-    int[] arrayRandom = new int[numberMatrix3DElement];
-
-    return randomNumber;
+    int[] arrayRandom = new int[matrix3DSize];
+    for (int i = 0; i < arrayRandom.Length; i++)
+    {
+        randomNumber = random.Next(minRandom, maxRandom);
+        if (arrayRandom.Contains(randomNumber))
+            i--;
+        else arrayRandom[i] = randomNumber;
+    }
+    return arrayRandom;
 }
 
-void FillMatrixRandom3DInt(int[,,] matrix3D, int min, int max)
+void FillMatrixRandom3DInt(int[,,] matrix3D,
+                            int[] arrayUniqueNumber,
+                            int min,
+                            int max)
 {
-    Random random = new Random();
+    int count = 0;
     for (int i = 0; i < matrix3D.GetLength(0); i++)
     {
         for (int j = 0; j < matrix3D.GetLength(1); j++)
         {
             for (int k = 0; k < matrix3D.GetLength(2); k++)
             {
-                matrix3D[i, j, k] = random.Next(random.Next(10, 50) + random.Next(10, 50));
+                matrix3D[i, j, k] = arrayUniqueNumber[count];
+                count++;
             }
         }
     }
@@ -98,6 +119,8 @@ string[] intervalMinMaxString = GetUserInputNumbersString("Введите гра
 intervalMinMaxString = CheckUserInputToInt(intervalMinMaxString);
 int[] intervalMinMaxInt = ConvertUserInputNumbersInt(intervalMinMaxString);
 int[,,] matrix3D = new int[matrixSizeInt[0], matrixSizeInt[1], matrixSizeInt[2]];
-FillMatrixRandom3DInt(matrix3D, intervalMinMaxInt[0], intervalMinMaxInt[1]);
 int countMatrix3DElement = GetMatrix3DSize(matrix3D);
+CheckUserMatrixSize(countMatrix3DElement, intervalMinMaxInt[0], intervalMinMaxInt[1]);
+int[] arrayUniqueNumbers = GetUniqeRandomArray(countMatrix3DElement, intervalMinMaxInt[0], intervalMinMaxInt[1]);
+FillMatrixRandom3DInt(matrix3D, arrayUniqueNumbers, intervalMinMaxInt[0], intervalMinMaxInt[1]);
 PrintMatrix3DInt(matrix3D, "Полученный массив: ");
