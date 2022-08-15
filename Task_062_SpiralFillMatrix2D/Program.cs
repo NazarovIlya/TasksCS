@@ -40,5 +40,10 @@ int[] ConvertUserInputNumbersInt(string[] userNumberString)
 
 
 
-
 //Console.Clear();
+string[] matrixSizeString = GetUserInputNumbersString("Введите размер матриц (n строк,n столбцов): ");
+matrixSizeString = CheckUserInputToInt(matrixSizeString);
+int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
+string[] intervalMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел: ");
+intervalMinMaxString = CheckUserInputToInt(intervalMinMaxString);
+int[] intervalMinMaxInt = ConvertUserInputNumbersInt(intervalMinMaxString);

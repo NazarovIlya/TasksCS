@@ -77,7 +77,7 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 }
 
 
-//Console.Clear();
+Console.Clear();
 int[] matrixSize = GetUserInputNumbersInt("Введите размер матриц (n строк,n столбцов): ");
 int[] firsrtMatrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую) для первой матрицы: ");
 int[] secondMatrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую) для второй матрицы: ");
