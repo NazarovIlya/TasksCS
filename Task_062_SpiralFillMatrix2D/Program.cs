@@ -36,9 +36,8 @@ int[] ConvertUserInputNumbersInt(string[] userNumberString)
     return userNumberInt;
 }
 
-void FillSpiralMatrix2DInt(int[,] matrix2D)
+void FillSpiralMatrix2DInt(int[,] matrix2D, int number, int summand)
 {
-    int number = 1; //TODO
     int nRows = matrix2D.GetLength(0) - 1;
     int nColumns = matrix2D.GetLength(1) - 1;
     int length = 0;
@@ -49,22 +48,22 @@ void FillSpiralMatrix2DInt(int[,] matrix2D)
         for (int j = i; j < nColumns; j++)
         {
             matrix2D[i, j] = number;
-            number++;
+            number += summand;
         }
         for (int k = i; k < nRows; k++)
         {
             matrix2D[k, nColumns] = number;
-            number++;
+            number += summand;
         }
         for (int l = nColumns; l > i; l--)
         {
             matrix2D[nRows, l] = number;
-            number++;
+            number += summand;
         }
         for (int m = nRows; m > i; m--)
         {
             matrix2D[m, i] = number;
-            number++;
+            number += summand;
         }
         nRows--;
         nColumns--;
@@ -94,9 +93,9 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 string[] matrixSizeString = GetUserInputNumbersString("Введите размер матриц (n строк,n столбцов): ");
 matrixSizeString = CheckUserInputToInt(matrixSizeString);
 int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
-// string[] intervalMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел: ");
-// intervalMinMaxString = CheckUserInputToInt(intervalMinMaxString);
-// int[] intervalMinMaxInt = ConvertUserInputNumbersInt(intervalMinMaxString);
+string[] minNumberNSummandString = GetUserInputNumbersString("Введите минимальное значение числа первого элемента массива и значение числа, на которое будет увеличиваться первое: ");
+minNumberNSummandString = CheckUserInputToInt(minNumberNSummandString);
+int[] minNumberNSummandInt = ConvertUserInputNumbersInt(minNumberNSummandString);
 int[,] matrixSpiral = new int[matrixSizeInt[0], matrixSizeInt[1]];
-FillSpiralMatrix2DInt(matrixSpiral);
+FillSpiralMatrix2DInt(matrixSpiral, minNumberNSummandInt[0], minNumberNSummandInt[1]);
 PrintMatrix2DInt(matrixSpiral, string.Empty);
