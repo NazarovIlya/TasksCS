@@ -36,6 +36,21 @@ int[] ConvertUserInputNumbersInt(string[] userNumberString)
     return userNumberInt;
 }
 
+void FillSpiralMatrix2DInt(int[,,] matrix2D,
+                            int min,
+                            int max)
+{
+    int count = 0;
+    for (int i = 0; i < matrix3D.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix3D.GetLength(1); j++)
+        {
+
+        }
+    }
+}
+
+
 
 
 
