@@ -36,17 +36,40 @@ int[] ConvertUserInputNumbersInt(string[] userNumberString)
     return userNumberInt;
 }
 
-void FillSpiralMatrix2DInt(int[,,] matrix2D,
-                            int min,
-                            int max)
+void FillSpiralMatrix2DInt(int[,] matrix2D)
 {
-    int count = 0;
-    for (int i = 0; i < matrix3D.GetLength(0); i++)
+    int number = 1; //TODO
+    int nRows = matrix2D.GetLength(0) - 1;
+    int nColumns = matrix2D.GetLength(1) - 1;
+    int length = 0;
+    if (nRows < nColumns) length = nRows;
+    length = nColumns;
+    for (int i = 0; i < length; i++)
     {
-        for (int j = 0; j < matrix3D.GetLength(1); j++)
+        for (int j = i; j < nColumns; j++)
         {
-
+            matrix2D[i, j] = number;
+            number++;
         }
+        for (int k = i; k < nRows; k++)
+        {
+            matrix2D[k, nColumns] = number;
+            number++;
+        }
+        for (int l = nColumns; l > i; l--)
+        {
+            matrix2D[nRows, l] = number;
+            number++;
+        }
+        for (int m = nRows; m > i; m--)
+        {
+            matrix2D[m, i] = number;
+            number++;
+        }
+        nRows--;
+        nColumns--;
+        if (length % 2 == 0)
+            matrix2D[nRows / 2 + 1, nColumns / 2 + 1] = number;
     }
 }
 
@@ -67,15 +90,13 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
     }
 }
 
-
-
-
-
-
 //Console.Clear();
 string[] matrixSizeString = GetUserInputNumbersString("Введите размер матриц (n строк,n столбцов): ");
 matrixSizeString = CheckUserInputToInt(matrixSizeString);
 int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
-string[] intervalMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел: ");
-intervalMinMaxString = CheckUserInputToInt(intervalMinMaxString);
-int[] intervalMinMaxInt = ConvertUserInputNumbersInt(intervalMinMaxString);
+// string[] intervalMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел: ");
+// intervalMinMaxString = CheckUserInputToInt(intervalMinMaxString);
+// int[] intervalMinMaxInt = ConvertUserInputNumbersInt(intervalMinMaxString);
+int[,] matrixSpiral = new int[matrixSizeInt[0], matrixSizeInt[1]];
+FillSpiralMatrix2DInt(matrixSpiral);
+PrintMatrix2DInt(matrixSpiral, string.Empty);
