@@ -111,7 +111,7 @@ void PrintMatrix3DInt(int[,,] matrix3D, string userOutputString)
 }
 
 
-//Console.Clear();
+Console.Clear();
 string[] matrixSizeString = GetUserInputNumbersString("Введите размер массива (три значения через запятую): ");
 matrixSizeString = CheckUserInputToInt(matrixSizeString);
 int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
