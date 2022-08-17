@@ -11,22 +11,35 @@
 // 2 3 5 9
 // 2 4 4 8
 
-int[] GetUserInputNumbersInt(string userInputNumberString)
+string[] GetUserInputNumbersString(string userInputTextString)
 {
-    Console.WriteLine(userInputNumberString);
-    string[] stringArray = Console.ReadLine().Split(",");
-    int[] numberArray = new int[stringArray.Length];
-    for (int i = 0; i < numberArray.Length; i++)
+    Console.WriteLine(userInputTextString);
+    string[] userInputString = Console.ReadLine().Split(",");
+    return userInputString;
+}
+
+string[] CheckUserInputToInt(string[] userInputString)
+{
+    for (int i = 0; i < userInputString.Length; i++)
     {
-        if (stringArray[i] == string.Empty || stringArray[i] == " "
-            || Convert.ToInt32(stringArray[i]) == null)
+        if (userInputString[i] == string.Empty || userInputString[i] == " "
+            || Convert.ToInt32(userInputString[i]) == null)
         {
             Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
             Environment.Exit(0);
         }
-        else numberArray[i] = Convert.ToInt32(stringArray[i]);
     }
-    return numberArray;
+    return userInputString;
+}
+
+int[] ConvertUserInputNumbersInt(string[] userNumberString)
+{
+    int[] userNumberInt = new int[userNumberString.Length];
+    for (int i = 0; i < userNumberString.Length; i++)
+    {
+        userNumberInt[i] = Convert.ToInt32(userNumberString[i]);
+    }
+    return userNumberInt;
 }
 
 void FillMatrix2DInt(int[,] matrix, int min, int max)
@@ -79,10 +92,14 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 
 
 Console.Clear();
-int[] matrixSize = GetUserInputNumbersInt("Введите размер матрицы (n строк,n столбцов): ");
-int[] matrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую): ");
-int[,] matrixToSort = new int[matrixSize[0], matrixSize[1]];
-FillMatrix2DInt(matrixToSort, matrixMinMax[0], matrixMinMax[1]);
+string[] matrixSizeString = GetUserInputNumbersString("Введите размер матрицы (n строк,n столбцов): ");
+CheckUserInputToInt(matrixSizeString);
+int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
+string[] matrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую): ");
+CheckUserInputToInt(matrixMinMaxString);
+int[] matrixMinMaxInt = ConvertUserInputNumbersInt(matrixMinMaxString);
+int[,] matrixToSort = new int[matrixSizeInt[0], matrixSizeInt[1]];
+FillMatrix2DInt(matrixToSort, matrixMinMaxInt[0], matrixMinMaxInt[1]);
 PrintMatrix2DInt(matrixToSort, "Исходный массив: ");
 SortLineElementsMatrix2D(matrixToSort);
 PrintMatrix2DInt(matrixToSort, "Массив после сортировки: ");
