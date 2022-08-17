@@ -28,12 +28,12 @@ int[] GetUserInputNumbersInt(string userInputNumberString)
 void FillMatrixTwoDimensionalInt(int[,] matrixTwoDimensional,
                                 int minIntervalValue, int maxIntervalValue)
 {
-    Random randomDouble = new Random();
+    Random random = new Random();
     for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
     {
         for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
         {
-            matrixTwoDimensional[i, j] = randomDouble.Next(minIntervalValue, maxIntervalValue);
+            matrixTwoDimensional[i, j] = random.Next(minIntervalValue, maxIntervalValue);
         }
     }
 }
