@@ -16,22 +16,34 @@
 // 56 8 4 24
 // 10 6 24 49
 
-int[] GetUserInputNumbersInt(string userInputNumberString)
+string[] GetUserInputNumbersString(string userInputTextString)
 {
-    Console.WriteLine(userInputNumberString);
-    string[] stringArray = Console.ReadLine().Split(",");
-    int[] numberArray = new int[stringArray.Length];
-    for (int i = 0; i < numberArray.Length; i++)
+    Console.WriteLine(userInputTextString);
+    string[] userInputString = Console.ReadLine().Split(",");
+    return userInputString;
+}
+
+void CheckUserInputToInt(string[] userInputString)
+{
+    for (int i = 0; i < userInputString.Length; i++)
     {
-        if (stringArray[i] == string.Empty || stringArray[i] == " "
-            || Convert.ToInt32(stringArray[i]) == null)
+        if (userInputString[i] == string.Empty || userInputString[i] == " "
+            || Convert.ToInt32(userInputString[i]) == null)
         {
             Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
             Environment.Exit(0);
         }
-        else numberArray[i] = Convert.ToInt32(stringArray[i]);
     }
-    return numberArray;
+}
+
+int[] ConvertUserInputNumbersInt(string[] userNumberString)
+{
+    int[] userNumberInt = new int[userNumberString.Length];
+    for (int i = 0; i < userNumberString.Length; i++)
+    {
+        userNumberInt[i] = Convert.ToInt32(userNumberString[i]);
+    }
+    return userNumberInt;
 }
 
 void FillMatrix2DInt(int[,] matrix, int min, int max)
@@ -78,13 +90,19 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 
 
 Console.Clear();
-int[] matrixSize = GetUserInputNumbersInt("Введите размер матриц (n строк,n столбцов): ");
-int[] firsrtMatrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую) для первой матрицы: ");
-int[] secondMatrixMinMax = GetUserInputNumbersInt("Введите границы интервала случайных чисел (через запятую) для второй матрицы: ");
-int[,] firstMatrix = new int[matrixSize[0], matrixSize[1]];
-int[,] secondMatrix = new int[matrixSize[0], matrixSize[1]];
-FillMatrix2DInt(firstMatrix, firsrtMatrixMinMax[0], secondMatrixMinMax[1]);
-FillMatrix2DInt(secondMatrix, secondMatrixMinMax[0], secondMatrixMinMax[1]);
+string[] matrixSizeString = GetUserInputNumbersString("Введите размер обеих матриц (n строк,n столбцов): ");
+CheckUserInputToInt(matrixSizeString);
+int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
+string[] firsrtMatrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую) для первой матрицы: ");
+CheckUserInputToInt(firsrtMatrixMinMaxString);
+int[] firsrtMatrixMinMaxInt = ConvertUserInputNumbersInt(firsrtMatrixMinMaxString);
+string[] secondMatrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую) для второй матрицы: ");
+CheckUserInputToInt(secondMatrixMinMaxString);
+int[] secondMatrixMinMaxInt = ConvertUserInputNumbersInt(secondMatrixMinMaxString);
+int[,] firstMatrix = new int[matrixSizeInt[0], matrixSizeInt[1]];
+int[,] secondMatrix = new int[matrixSizeInt[0], matrixSizeInt[1]];
+FillMatrix2DInt(firstMatrix, firsrtMatrixMinMaxInt[0], secondMatrixMinMaxInt[1]);
+FillMatrix2DInt(secondMatrix, secondMatrixMinMaxInt[0], secondMatrixMinMaxInt[1]);
 int[,] resultMatrix = GetProductBothMatrix2D(firstMatrix, secondMatrix);
 PrintMatrix2DInt(firstMatrix, "Первый массив: ");
 PrintMatrix2DInt(secondMatrix, "Второй массив: ");
