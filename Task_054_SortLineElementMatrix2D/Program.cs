@@ -18,7 +18,7 @@ string[] GetUserInputNumbersString(string userInputTextString)
     return userInputString;
 }
 
-string[] CheckUserInputToInt(string[] userInputString)
+void CheckUserInputToInt(string[] userInputString)
 {
     for (int i = 0; i < userInputString.Length; i++)
     {
@@ -29,7 +29,6 @@ string[] CheckUserInputToInt(string[] userInputString)
             Environment.Exit(0);
         }
     }
-    return userInputString;
 }
 
 int[] ConvertUserInputNumbersInt(string[] userNumberString)
