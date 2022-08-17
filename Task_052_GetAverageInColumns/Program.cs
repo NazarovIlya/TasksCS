@@ -15,7 +15,8 @@ int[] GetUserInputNumbersInt(string userInputNumberString)
     for (int i = 0; i < numberArray.Length; i++)
     {
         if (stringArray[i] == string.Empty || stringArray[i] == " "
-            || Convert.ToInt32(stringArray[i]) == null)
+            || Convert.ToInt32(stringArray[i]) == null
+            || userInputString.Length < 2)
         {
             Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
             Environment.Exit(0);

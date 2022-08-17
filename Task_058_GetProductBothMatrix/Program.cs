@@ -28,7 +28,8 @@ void CheckUserInputToInt(string[] userInputString)
     for (int i = 0; i < userInputString.Length; i++)
     {
         if (userInputString[i] == string.Empty || userInputString[i] == " "
-            || Convert.ToInt32(userInputString[i]) == null)
+            || Convert.ToInt32(userInputString[i]) == null
+            || userInputString.Length < 2)
         {
             Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
             Environment.Exit(0);
@@ -58,28 +59,32 @@ void FillMatrix2DInt(int[,] matrix, int min, int max)
     }
 }
 
-void CheckMatrixSizes(int[,] firstMatrix2D, int[,] secondMatrix2D)
+void CheckMatrixSizes(int firstMatrix2DLength, int secondMatrix2DLength)
 {
-    if (firstMatrix2D.GetLength(1) != secondMatrix2D.GetLength(0))
+    if (firstMatrix2DLength != secondMatrix2DLength)
     {
         Console.WriteLine("Матрицы с такими размерами перемножать нельзя, так как количество столбцов первой не равно количеству строк второй.");
         Environment.Exit(0);
     }
-    else Console.WriteLine("Перемножаем матрицы...");
+    else Console.WriteLine("Матрицы могут быть перемножены.");
 }
 
 int[,] GetProductBothMatrix2D(int[,] firstMatrix2D, int[,] secondMatrix2D)
 {
-    int product = 0;
-    for (int i = 0; i < length; i++)
+    int[,] productMatrix = new int[firstMatrix2D.GetLength(0), secondMatrix2D.GetLength(1)];
+    for (int i = 0; i < firstMatrix2D.GetLength(0); i++)
     {
-        for (int j = 0; j < length; j++)
+        int sumProduct = 0;
+        for (int j = 0; j < secondMatrix2D.GetLength(1); j++)
         {
-            product =
+            for (int k = 0; k < secondMatrix2D.GetLength(0); k++)
+            {
+                sumProduct = firstMatrix2D[i, k] * secondMatrix2D[k, j];
+                productMatrix[i, j] += sumProduct;
+            }
         }
-
-        return productMatrix;
     }
+    return productMatrix;
 }
 
 void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
@@ -101,23 +106,23 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 
 
 Console.Clear();
-string[] matrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
-CheckUserInputToInt(matrixSizeString);
-int[] firstMatrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
+string[] firstMatrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
+CheckUserInputToInt(firstMatrixSizeString);
+int[] firstMatrixSizeInt = ConvertUserInputNumbersInt(firstMatrixSizeString);
 string[] secondMatrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
 CheckUserInputToInt(secondMatrixSizeString);
-int[] secondMetrixInt = ConvertUserInputNumbersInt(secondMatrixSizeString);
+int[] secondMatrixSizeInt = ConvertUserInputNumbersInt(secondMatrixSizeString);
+CheckMatrixSizes(firstMatrixSizeInt[1], secondMatrixSizeInt[0]);
 string[] firsrtMatrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую) для первой матрицы: ");
 CheckUserInputToInt(firsrtMatrixMinMaxString);
-int[] firsrtMatrixMinMaxInt = ConvertUserInputNumbersInt(firsrtMatrixMinMaxString);
+int[] firstMatrixMinMaxInt = ConvertUserInputNumbersInt(firsrtMatrixMinMaxString);
 string[] secondMatrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую) для второй матрицы: ");
 CheckUserInputToInt(secondMatrixMinMaxString);
 int[] secondMatrixMinMaxInt = ConvertUserInputNumbersInt(secondMatrixMinMaxString);
 int[,] firstMatrix = new int[firstMatrixSizeInt[0], firstMatrixSizeInt[1]];
-int[,] secondMatrix = new int[firstMatrixSizeInt[0], firstMatrixSizeInt[1]];
-FillMatrix2DInt(firstMatrix, firsrtMatrixMinMaxInt[0], secondMatrixMinMaxInt[1]);
+int[,] secondMatrix = new int[secondMatrixSizeInt[0], secondMatrixSizeInt[1]];
+FillMatrix2DInt(firstMatrix, firstMatrixMinMaxInt[0], firstMatrixMinMaxInt[1]);
 FillMatrix2DInt(secondMatrix, secondMatrixMinMaxInt[0], secondMatrixMinMaxInt[1]);
-CheckMatrixSizes(firstMatrix, secondMatrix);
 int[,] resultMatrix = GetProductBothMatrix2D(firstMatrix, secondMatrix);
 PrintMatrix2DInt(firstMatrix, "Первый массив: ");
 PrintMatrix2DInt(secondMatrix, "Второй массив: ");

@@ -17,7 +17,8 @@ string[] CheckUserInputToInt(string[] userInputString)
     for (int i = 0; i < userInputString.Length; i++)
     {
         if (userInputString[i] == string.Empty || userInputString[i] == " "
-            || Convert.ToInt32(userInputString[i]) == null)
+            || Convert.ToInt32(userInputString[i]) == null
+            || userInputString.Length < 2)
         {
             Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
             Environment.Exit(0);
