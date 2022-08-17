@@ -58,17 +58,28 @@ void FillMatrix2DInt(int[,] matrix, int min, int max)
     }
 }
 
+void CheckMatrixSizes(int[,] firstMatrix2D, int[,] secondMatrix2D)
+{
+    if (firstMatrix2D.GetLength(1) != secondMatrix2D.GetLength(0))
+    {
+        Console.WriteLine("Матрицы с такими размерами перемножать нельзя, так как количество столбцов первой не равно количеству строк второй.");
+        Environment.Exit(0);
+    }
+    else Console.WriteLine("Перемножаем матрицы...");
+}
+
 int[,] GetProductBothMatrix2D(int[,] firstMatrix2D, int[,] secondMatrix2D)
 {
-    int[,] productMatrix = new int[firstMatrix2D.GetLength(0), firstMatrix2D.GetLength(1)];
-    for (int i = 0; i < productMatrix.GetLength(0); i++)
+    int product = 0;
+    for (int i = 0; i < length; i++)
     {
-        for (int j = 0; j < productMatrix.GetLength(1); j++)
+        for (int j = 0; j < length; j++)
         {
-            productMatrix[i, j] = firstMatrix2D[i, j] * secondMatrix2D[i, j];
+            product =
         }
+
+        return productMatrix;
     }
-    return productMatrix;
 }
 
 void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
@@ -90,19 +101,23 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 
 
 Console.Clear();
-string[] matrixSizeString = GetUserInputNumbersString("Введите размер обеих матриц (n строк,n столбцов): ");
+string[] matrixSizeString = GetUserInputNumbersString("Введите размер первой матрицы (n строк,m столбцов): ");
 CheckUserInputToInt(matrixSizeString);
-int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
+int[] firstMatrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
+string[] secondMatrixSizeString = GetUserInputNumbersString("Введите размер второй матрицы (m строк,n столбцов): ");
+CheckUserInputToInt(secondMatrixSizeString);
+int[] secondMetrixInt = ConvertUserInputNumbersInt(secondMatrixSizeString);
 string[] firsrtMatrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую) для первой матрицы: ");
 CheckUserInputToInt(firsrtMatrixMinMaxString);
 int[] firsrtMatrixMinMaxInt = ConvertUserInputNumbersInt(firsrtMatrixMinMaxString);
 string[] secondMatrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую) для второй матрицы: ");
 CheckUserInputToInt(secondMatrixMinMaxString);
 int[] secondMatrixMinMaxInt = ConvertUserInputNumbersInt(secondMatrixMinMaxString);
-int[,] firstMatrix = new int[matrixSizeInt[0], matrixSizeInt[1]];
-int[,] secondMatrix = new int[matrixSizeInt[0], matrixSizeInt[1]];
+int[,] firstMatrix = new int[firstMatrixSizeInt[0], firstMatrixSizeInt[1]];
+int[,] secondMatrix = new int[firstMatrixSizeInt[0], firstMatrixSizeInt[1]];
 FillMatrix2DInt(firstMatrix, firsrtMatrixMinMaxInt[0], secondMatrixMinMaxInt[1]);
 FillMatrix2DInt(secondMatrix, secondMatrixMinMaxInt[0], secondMatrixMinMaxInt[1]);
+CheckMatrixSizes(firstMatrix, secondMatrix);
 int[,] resultMatrix = GetProductBothMatrix2D(firstMatrix, secondMatrix);
 PrintMatrix2DInt(firstMatrix, "Первый массив: ");
 PrintMatrix2DInt(secondMatrix, "Второй массив: ");
