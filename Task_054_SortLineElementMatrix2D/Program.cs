@@ -63,7 +63,7 @@ void SortLineElementsMatrix2D(int[,] matrix2D)
         {
             for (int k = j + 1; k < matrix2D.GetLength(1); k++)
             {
-                if (matrix2D[i, j] < matrix2D[i, k]) continue;
+                if (matrix2D[i, j] > matrix2D[i, k]) continue;
                 int temp = matrix2D[i, j];
                 matrix2D[i, j] = matrix2D[i, k];
                 matrix2D[i, k] = temp;
