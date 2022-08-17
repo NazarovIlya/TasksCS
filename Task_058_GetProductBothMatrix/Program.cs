@@ -101,10 +101,10 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 
 
 Console.Clear();
-string[] matrixSizeString = GetUserInputNumbersString("Введите размер первой матрицы (n строк,m столбцов): ");
+string[] matrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
 CheckUserInputToInt(matrixSizeString);
 int[] firstMatrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
-string[] secondMatrixSizeString = GetUserInputNumbersString("Введите размер второй матрицы (m строк,n столбцов): ");
+string[] secondMatrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
 CheckUserInputToInt(secondMatrixSizeString);
 int[] secondMetrixInt = ConvertUserInputNumbersInt(secondMatrixSizeString);
 string[] firsrtMatrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую) для первой матрицы: ");
