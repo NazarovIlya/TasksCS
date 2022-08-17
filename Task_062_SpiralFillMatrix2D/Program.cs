@@ -90,7 +90,7 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 }
 
 //Console.Clear();
-string[] matrixSizeString = GetUserInputNumbersString("Введите размер матриц (n строк,n столбцов): ");
+string[] matrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
 matrixSizeString = CheckUserInputToInt(matrixSizeString);
 int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
 string[] minNumberNSummandString = GetUserInputNumbersString("Введите минимальное значение числа первого элемента массива и значение числа, на которое будет увеличиваться первое: ");
