@@ -46,6 +46,15 @@ void FillMatrix2DInt(int[,] matrix, int min, int max)
     }
 }
 
+void CheckMatrixSizes(int rows, int columns)
+{
+    if (rows != columns)
+    {
+        Console.WriteLine("Замена значений строк на значения столбцов невозможна, так как матрица не является квадратной.");
+        Environment.Exit(0);
+    }
+}
+
 void ReplaceRowsColumns(int[,] matrix)
 {
     int temp = 0;
@@ -85,8 +94,8 @@ int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
 string[] matrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую): ");
 CheckUserInputToInt(matrixMinMaxString);
 int[] matrixMinMaxInt = ConvertUserInputNumbersInt(matrixMinMaxString);
+CheckMatrixSizes(matrixMinMaxInt[0], matrixMinMaxInt[1]);
 int[,] matrix2D = new int[matrixSizeInt[0], matrixSizeInt[1]];
-
 PrintMatrix2DInt(matrix2D, "");
 FillMatrix2DInt(matrix2D, matrixMinMaxInt[0], matrixMinMaxInt[1]);
 PrintMatrix2DInt(matrix2D, "");

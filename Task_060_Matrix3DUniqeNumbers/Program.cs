@@ -115,7 +115,7 @@ Console.Clear();
 string[] matrixSizeString = GetUserInputNumbersString("Введите размер массива (три значения через запятую): ");
 matrixSizeString = CheckUserInputToInt(matrixSizeString);
 int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
-string[] intervalMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел: ");
+string[] intervalMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел(через запятую): ");
 intervalMinMaxString = CheckUserInputToInt(intervalMinMaxString);
 int[] intervalMinMaxInt = ConvertUserInputNumbersInt(intervalMinMaxString);
 int[,,] matrix3D = new int[matrixSizeInt[0], matrixSizeInt[1], matrixSizeInt[2]];
