@@ -45,6 +45,20 @@ void FillMatrix2DInt(int[,] matrixTwoDimensional,
     }
 }
 
+void ReplaceRows(int[,] matrixTwoDimensional, int firstRow, int lastRow)
+{
+    firstRow = firstRow - 1;
+    lastRow = lastRow - 1;
+    int temp = 0;
+    for (int i = 0; i < matrixTwoDimensional.GetLength(1); i++)
+    {
+        temp = matrixTwoDimensional[lastRow, i];
+        matrixTwoDimensional[lastRow, i] = matrixTwoDimensional[firstRow, i];
+        matrixTwoDimensional[firstRow, i] = temp;
+    }
+
+}
+
 void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 {
     Console.WriteLine(userOutputString);
@@ -63,10 +77,7 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 }
 
 
-
-
-
-//Console.Clear();
+Console.Clear();
 string[] matrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
 CheckUserInputToInt(matrixSizeString);
 int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
@@ -74,6 +85,10 @@ string[] matrixMinMaxString = GetUserInputNumbersString("Введите инте
 CheckUserInputToInt(matrixMinMaxString);
 int[] matrixMinMaxInt = ConvertUserInputNumbersInt(matrixMinMaxString);
 int[,] matrix2D = new int[matrixSizeInt[0], matrixSizeInt[1]];
-PrintMatrix2DInt(matrix2D, "Массив: ");
+string[] numberRowString = GetUserInputNumbersString("Введите номера строк, значения которых необходимо поменять местами");
+CheckUserInputToInt(numberRowString);
+int[] numberRowInt = ConvertUserInputNumbersInt(numberRowString);
 FillMatrix2DInt(matrix2D, matrixMinMaxInt[0], matrixMinMaxInt[1]);
-PrintMatrix2DInt(matrix2D, "Заполненный массив: ");
+PrintMatrix2DInt(matrix2D, "Исходный массив: ");
+ReplaceRows(matrix2D, numberRowInt[0], numberRowInt[1]);
+PrintMatrix2DInt(matrix2D, "Масссив после замены строк: ");
