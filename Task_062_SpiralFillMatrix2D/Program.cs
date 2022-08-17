@@ -94,7 +94,7 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 string[] matrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
 matrixSizeString = CheckUserInputToInt(matrixSizeString);
 int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
-string[] minNumberNSummandString = GetUserInputNumbersString("Введите минимальное значение числа первого элемента массива и значение числа, на которое будет увеличиваться первое: ");
+string[] minNumberNSummandString = GetUserInputNumbersString("Введите минимальное значение числа первого элемента массива и значение числа, на которое будет увеличиваться первое (числа вводить через запятую): ");
 minNumberNSummandString = CheckUserInputToInt(minNumberNSummandString);
 int[] minNumberNSummandInt = ConvertUserInputNumbersInt(minNumberNSummandString);
 int[,] matrixSpiral = new int[matrixSizeInt[0], matrixSizeInt[1]];
