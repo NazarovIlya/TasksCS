@@ -32,6 +32,19 @@ int[] ConvertUserInputNumbersInt(string[] userNumberString)
     return userNumberInt;
 }
 
+void FillMatrix2DInt(int[,] matrixTwoDimensional,
+                                int minIntervalValue, int maxIntervalValue)
+{
+    Random random = new Random();
+    for (int i = 0; i < matrixTwoDimensional.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrixTwoDimensional.GetLength(1); j++)
+        {
+            matrixTwoDimensional[i, j] = random.Next(minIntervalValue, maxIntervalValue);
+        }
+    }
+}
+
 void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 {
     Console.WriteLine(userOutputString);
@@ -62,3 +75,5 @@ CheckUserInputToInt(matrixMinMaxString);
 int[] matrixMinMaxInt = ConvertUserInputNumbersInt(matrixMinMaxString);
 int[,] matrix2D = new int[matrixSizeInt[0], matrixSizeInt[1]];
 PrintMatrix2DInt(matrix2D, "Массив: ");
+FillMatrix2DInt(matrix2D, matrixMinMaxInt[0], matrixMinMaxInt[1]);
+PrintMatrix2DInt(matrix2D, "Заполненный массив: ");
