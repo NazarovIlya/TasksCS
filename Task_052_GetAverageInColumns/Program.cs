@@ -85,6 +85,7 @@ void PrintAverageArray(double[] array, string preOutputText, string postOutputTe
     Console.WriteLine(postOutputText);
 }
 
+
 Console.Clear();
 int[] RowColum = GetUserInputNumbersInt("Введите количество строк и столбцов массива через запятую: ");
 int[] arrayIntervalMinMax = GetUserInputNumbersInt("Введите интервал значений массива через запятую: ");
