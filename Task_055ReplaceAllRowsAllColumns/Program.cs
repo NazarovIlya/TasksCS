@@ -55,18 +55,18 @@ void CheckMatrixSizes(int rows, int columns)
     }
 }
 
-void ReplaceRowsColumns(int[,] matrix)
+int[,] ReplaceRowsColumns(int[,] matrix)
 {
     int temp = 0;
+    int[,] matrixNew = new int[matrix.GetLength(0), matrix.GetLength(1)];
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            temp = matrix[i, j];
-            matrix[j, i] = matrix[i, j];
-            matrix[j, i] = temp;
+            matrixNew[i, j] = matrix[j, i];
         }
     }
+    return matrixNew;
 }
 
 void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
@@ -96,8 +96,7 @@ CheckUserInputToInt(matrixMinMaxString);
 int[] matrixMinMaxInt = ConvertUserInputNumbersInt(matrixMinMaxString);
 int[,] matrix2D = new int[matrixSizeInt[0], matrixSizeInt[1]];
 CheckMatrixSizes(matrix2D.GetLength(0), matrix2D.GetLength(1));
-PrintMatrix2DInt(matrix2D, "");
 FillMatrix2DInt(matrix2D, matrixMinMaxInt[0], matrixMinMaxInt[1]);
-PrintMatrix2DInt(matrix2D, "");
-ReplaceRowsColumns(matrix2D);
-PrintMatrix2DInt(matrix2D, "");
+PrintMatrix2DInt(matrix2D, "Исходный массив: ");
+int[,] matrixReplaced = ReplaceRowsColumns(matrix2D);
+PrintMatrix2DInt(matrixReplaced, "Массив с замененными на столбцы строками: ");
