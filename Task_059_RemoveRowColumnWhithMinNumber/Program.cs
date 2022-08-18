@@ -47,7 +47,46 @@ void FillMatrix2DInt(int[,] matrixTwoDimensional,
     }
 }
 
+int[] FindIndexesMinElement(int[,] matrix2D)
+{
+    int min = matrix2D[0, 0];
+    int[] coordinate = new int[2];
+    for (int i = 0; i < matrix2D.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix2D.GetLength(1); j++)
+        {
+            if (matrix2D[i, j] < min)
+            {
+                min = matrix2D[i, j];
+                coordinate[0] = i;
+                coordinate[1] = j;
+            }
+        }
+    }
+    Console.WriteLine($" {min} --> {coordinate[0] + 1}, {coordinate[1] + 1}");
+    return coordinate;
+}
 
+int[,] RemoveRowColumn(int[,] matrix2D, int[] arrayCoordinate)
+{
+    int row = 0;
+    int column = 0;
+    int[,] matrixRemovedRowColumn = new int[matrix2D.GetLength(0) - 1,
+                                            matrix2D.GetLength(1) - 1];
+    for (int i = 0; i < matrixRemovedRowColumn.GetLength(0); i++)
+    {
+        if (row == arrayCoordinate[0]) row++;
+        for (int j = 0; j < matrixRemovedRowColumn.GetLength(1); j++)
+        {
+            if (column == arrayCoordinate[1]) column++;
+            matrixRemovedRowColumn[i, j] = matrix2D[row, column];
+            column++;
+        }
+        column = 0;
+        row++;
+    }
+    return matrixRemovedRowColumn;
+}
 
 void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 {
@@ -65,3 +104,14 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
         Console.WriteLine();
     }
 }
+
+
+//Console.Clear();
+
+int[,] matrix = new int[4, 4];
+FillMatrix2DInt(matrix, -1, 10);
+PrintMatrix2DInt(matrix, string.Empty);
+
+int[] indexes = FindIndexesMinElement(matrix);
+int[,] matrixRemoved = RemoveRowColumn(matrix, indexes);
+PrintMatrix2DInt(matrixRemoved, string.Empty);
