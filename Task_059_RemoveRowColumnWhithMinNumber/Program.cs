@@ -63,7 +63,7 @@ int[] FindIndexesMinElement(int[,] matrix2D)
             }
         }
     }
-    Console.WriteLine($" {min} --> {coordinate[0] + 1}, {coordinate[1] + 1}");
+    Console.WriteLine($"Минимальное значение элемента: {min} --> на пересечении {coordinate[0] + 1} строки, {coordinate[1] + 1} столбца");
     return coordinate;
 }
 
@@ -107,10 +107,17 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 
 
 Console.Clear();
-int[,] matrix = new int[4, 4];
-FillMatrix2DInt(matrix, -1, 10);
-PrintMatrix2DInt(matrix, string.Empty);
-
+string[] matrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
+CheckUserInputToInt(matrixSizeString);
+int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
+string[] matrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую): ");
+CheckUserInputToInt(matrixMinMaxString);
+int[] matrixMinMaxInt = ConvertUserInputNumbersInt(matrixMinMaxString);
+int[,] matrix = new int[matrixSizeInt[0], matrixSizeInt[1]];
+FillMatrix2DInt(matrix, matrixMinMaxInt[0], matrixMinMaxInt[1]);
+PrintMatrix2DInt(matrix, "Исходный массив: ");
+Console.WriteLine();
 int[] indexes = FindIndexesMinElement(matrix);
+Console.WriteLine();
 int[,] matrixRemoved = RemoveRowColumn(matrix, indexes);
-PrintMatrix2DInt(matrixRemoved, string.Empty);
+PrintMatrix2DInt(matrixRemoved, "Массив с удаленными строкой и столбцом содеращих минимальное значение элемента: ");
