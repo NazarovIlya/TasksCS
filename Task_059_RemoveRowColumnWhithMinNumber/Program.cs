@@ -106,8 +106,7 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 }
 
 
-//Console.Clear();
-
+Console.Clear();
 int[,] matrix = new int[4, 4];
 FillMatrix2DInt(matrix, -1, 10);
 PrintMatrix2DInt(matrix, string.Empty);
