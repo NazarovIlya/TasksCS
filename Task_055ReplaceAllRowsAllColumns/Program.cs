@@ -87,15 +87,15 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 }
 
 
-Console.Clear
+Console.Clear();
 string[] matrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
 CheckUserInputToInt(matrixSizeString);
 int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
 string[] matrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую): ");
 CheckUserInputToInt(matrixMinMaxString);
 int[] matrixMinMaxInt = ConvertUserInputNumbersInt(matrixMinMaxString);
-CheckMatrixSizes(matrixMinMaxInt[0], matrixMinMaxInt[1]);
 int[,] matrix2D = new int[matrixSizeInt[0], matrixSizeInt[1]];
+CheckMatrixSizes(matrix2D.GetLength(0), matrix2D.GetLength(1));
 PrintMatrix2DInt(matrix2D, "");
 FillMatrix2DInt(matrix2D, matrixMinMaxInt[0], matrixMinMaxInt[1]);
 PrintMatrix2DInt(matrix2D, "");
