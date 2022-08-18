@@ -20,7 +20,36 @@
 // 4 встречается 1 раз
 // 6 встречается 2 раза
 
+string[] GetUserInputNumbersString(string userInputTextString)
+{
+    Console.WriteLine(userInputTextString);
+    string[] userInputString = Console.ReadLine().Split(",");
+    return userInputString;
+}
 
+void CheckUserInputToInt(string[] userInputString)
+{
+    for (int i = 0; i < userInputString.Length; i++)
+    {
+        if (userInputString[i] == string.Empty || userInputString[i] == " "
+            || Convert.ToInt32(userInputString[i]) == null
+            || userInputString.Length < 2)
+        {
+            Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
+            Environment.Exit(0);
+        }
+    }
+}
+
+int[] ConvertUserInputNumbersInt(string[] userNumberString)
+{
+    int[] userNumberInt = new int[userNumberString.Length];
+    for (int i = 0; i < userNumberString.Length; i++)
+    {
+        userNumberInt[i] = Convert.ToInt32(userNumberString[i]);
+    }
+    return userNumberInt;
+}
 
 void FillMatrix2DInt(int[,] matrixTwoDimensional,
                                 int minIntervalValue, int maxIntervalValue)
@@ -102,11 +131,16 @@ void PrintMatrix2DInt(int[,] matrixTwoDimensional, string userOutputString)
 
 
 //Console.Clear();
-
-int[,] matrix = new int[3, 3];
-FillMatrix2DInt(matrix, 1, 20);
-PrintMatrix2DInt(matrix, String.Empty);
+string[] matrixSizeString = GetUserInputNumbersString("Введите количество строк и столбцов массива через запятую: ");
+CheckUserInputToInt(matrixSizeString);
+int[] matrixSizeInt = ConvertUserInputNumbersInt(matrixSizeString);
+string[] matrixMinMaxString = GetUserInputNumbersString("Введите границы интервала случайных чисел (через запятую): ");
+CheckUserInputToInt(matrixMinMaxString);
+int[] matrixMinMaxInt = ConvertUserInputNumbersInt(matrixMinMaxString);
+int[,] matrix = new int[matrixSizeInt[0], matrixSizeInt[1]];
+FillMatrix2DInt(matrix, matrixMinMaxInt[0], matrixMinMaxInt[1]);
+PrintMatrix2DInt(matrix, "Исходный масси: ");
 int[] array = ConversionArray(matrix);
-PrintArray(array, String.Empty, String.Empty);
+PrintArray(array, "Массив переведенный в строку: ", String.Empty);
 OutputCountNumbersToConsole(array);
 
