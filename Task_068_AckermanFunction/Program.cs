@@ -45,5 +45,10 @@ int GetAckermanFunction(int argM, int argN)
     return GetAckermanFunction(argM - 1, GetAckermanFunction(argM, argN - 1));
 }
 
-int result = GetAckermanFunction(4, 4);
-Console.WriteLine($"{result}");
+
+//Console.Clear();
+string[] arrayMNAckermanArgsString = GetUserInputNumbersString("Введите аргументы M и N для вычисления функции Аккермана: ");
+CheckUserInputToInt(arrayMNAckermanArgsString);
+int[] arrayMNAckermanArgsInt = ConvertUserInputNumbersInt(arrayMNAckermanArgsString);
+int result = GetAckermanFunction(arrayMNAckermanArgsInt[0], arrayMNAckermanArgsInt[1]);
+Console.WriteLine($"Значение функции Аккермана при M = {arrayMNAckermanArgsInt[0]} и N = {arrayMNAckermanArgsInt[1]} равно {result}");
