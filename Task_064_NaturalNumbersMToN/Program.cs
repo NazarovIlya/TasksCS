@@ -19,6 +19,7 @@ void WriteNaturalNumbresNTo1(int number)
 }
 
 
-//Console.Clear();
+Console.Clear();
 int num = GetUserInputInt("Введите либое натуральное число: ");
+Console.WriteLine($"Ряд натуральных чисел от {num} до 1: ");
 WriteNaturalNumbresNTo1(num);
