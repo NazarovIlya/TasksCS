@@ -38,7 +38,13 @@ void WriteNaturalNumbersNToM(int m, int n)
 {
     if (m > n) return;
     Console.Write($"{m} ");
-    NaturalNumbersNToM(++m, n);
+    WriteNaturalNumbersNToM(++m, n);
 }
 
-NaturalNumbersNToM(1, 10);
+
+Console.WriteLine();
+string[] arrayNaturalNumberIntervalString = GetUserInputNumbersString("Введите интервал значений натуральных чисел: ");
+CheckUserInputToInt(arrayNaturalNumberIntervalString);
+int[] arrayNaturalNumberIntervalInt = ConvertUserInputNumbersInt(arrayNaturalNumberIntervalString);
+Console.WriteLine("В заданном интервале натуральными являются: ");
+WriteNaturalNumbersNToM(arrayNaturalNumberIntervalInt[0], arrayNaturalNumberIntervalInt[1]);
