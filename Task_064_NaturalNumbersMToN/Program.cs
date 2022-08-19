@@ -4,6 +4,7 @@
 // M = 4; N = 8. -> ""4, 6, 7, 8""
 
 
+
 void NaturalNumbersNToM(int m, int n)
 {
     if (m > n) Console.WriteLine("Число M должно быть меньше числа N.");
