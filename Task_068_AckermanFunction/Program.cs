@@ -41,12 +41,11 @@ int GetAckermanFunction(int argM, int argN)
         return argN + 1;
     if (argM > 0 && argN == 0)
         return GetAckermanFunction(argM - 1, 1);
-    //if (argM > 0 && argN > 0) 
     return GetAckermanFunction(argM - 1, GetAckermanFunction(argM, argN - 1));
 }
 
 
-//Console.Clear();
+Console.Clear();
 string[] arrayMNAckermanArgsString = GetUserInputNumbersString("Введите аргументы M и N для вычисления функции Аккермана: ");
 CheckUserInputToInt(arrayMNAckermanArgsString);
 int[] arrayMNAckermanArgsInt = ConvertUserInputNumbersInt(arrayMNAckermanArgsString);
