@@ -18,7 +18,7 @@ int GetSumDigits(int number, int sum)
 }
 
 
-//Console.Clear();
+Console.Clear();
 int num = GetUserInputInt("Введите число больше 9: ");
 int result = GetSumDigits(num, 0);
 Console.WriteLine($"Сумма всех цифр в числе: {num} --> {result}.");
