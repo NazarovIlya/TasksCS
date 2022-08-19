@@ -34,17 +34,17 @@ int[] ConvertUserInputNumbersInt(string[] userNumberString)
     return userNumberInt;
 }
 
-int GetSumNaturalNumbersmToN(int m, int n)
+int GetSumNaturalNumbersMToN(int m, int n)
 {
     int sum = m;
     if (m >= n) return sum;
-    return sum += GetSumNaturalNumbersmToN(++m, n);
+    return sum += GetSumNaturalNumbersMToN(++m, n);
 }
 
 
-//Console.Clear();
-string[] arrayNaturalNumberIntervalString = GetUserInputNumbersString("Введите интервал значений натуральных чисел: ");
+Console.Clear();
+string[] arrayNaturalNumberIntervalString = GetUserInputNumbersString("Введите интервал значений натуральных чисел через запятую: ");
 CheckUserInputToInt(arrayNaturalNumberIntervalString);
 int[] arrayNaturalNumberIntervalInt = ConvertUserInputNumbersInt(arrayNaturalNumberIntervalString);
-int sum = GetSumNaturalNumbersmToN(arrayNaturalNumberIntervalInt[0], arrayNaturalNumberIntervalInt[1]);
+int sum = GetSumNaturalNumbersMToN(arrayNaturalNumberIntervalInt[0], arrayNaturalNumberIntervalInt[1]);
 Console.WriteLine($"Сумма всех натуральных чисел в заданном интервале: {sum}");
