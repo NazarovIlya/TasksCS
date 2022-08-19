@@ -1,50 +1,24 @@
-﻿// Задача 64: Задайте значения M и N. Напишите программу, 
-// которая выведет все натуральные числа в промежутке от M до N.
-// M = 1; N = 5. -> ""1, 2, 3, 4, 5""
-// M = 4; N = 8. -> ""4, 6, 7, 8""
+﻿// Задача 64: Задача 64: Задайте значение N. Напишите программу, 
+// которая выведет все натуральные числа в промежутке от N до 1. 
+// Выполнить с помощью рекурсии.
+// N = 5 -> "5, 4, 3, 2, 1"
+// N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
-string[] GetUserInputNumbersString(string userInputTextString)
+int GetUserInputInt(string userInputString)
 {
-    Console.WriteLine(userInputTextString);
-    string[] userInputString = Console.ReadLine().Split(",");
-    return userInputString;
+    Console.WriteLine(userInputString);
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
 }
 
-void CheckUserInputToInt(string[] userInputString)
+void WriteNaturalNumbresNTo1(int number)
 {
-    for (int i = 0; i < userInputString.Length; i++)
-    {
-        if (userInputString[i] == string.Empty || userInputString[i] == " "
-            || Convert.ToInt32(userInputString[i]) == null
-            || userInputString.Length < 2)
-        {
-            Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
-            Environment.Exit(0);
-        }
-    }
-}
-
-int[] ConvertUserInputNumbersInt(string[] userNumberString)
-{
-    int[] userNumberInt = new int[userNumberString.Length];
-    for (int i = 0; i < userNumberString.Length; i++)
-    {
-        userNumberInt[i] = Convert.ToInt32(userNumberString[i]);
-    }
-    return userNumberInt;
-}
-
-void WriteNaturalNumbersNToM(int m, int n)
-{
-    if (m > n) return;
-    Console.Write($"{m} ");
-    WriteNaturalNumbersNToM(++m, n);
+    if (number == 0) return;
+    Console.Write($"{number} ");
+    WriteNaturalNumbresNTo1(number - 1);
 }
 
 
-Console.Clear();
-string[] arrayNaturalNumberIntervalString = GetUserInputNumbersString("Введите интервал значений натуральных чисел: ");
-CheckUserInputToInt(arrayNaturalNumberIntervalString);
-int[] arrayNaturalNumberIntervalInt = ConvertUserInputNumbersInt(arrayNaturalNumberIntervalString);
-Console.WriteLine("В заданном интервале натуральными являются: ");
-WriteNaturalNumbersNToM(arrayNaturalNumberIntervalInt[0], arrayNaturalNumberIntervalInt[1]);
+//Console.Clear();
+int num = GetUserInputInt("Введите либое натуральное число: ");
+WriteNaturalNumbresNTo1(num);
