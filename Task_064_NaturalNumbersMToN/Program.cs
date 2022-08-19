@@ -4,16 +4,11 @@
 // M = 4; N = 8. -> ""4, 6, 7, 8""
 
 
-
-void NaturalNumbersNToM(int m, int n)
+void WriteNaturalNumbersNToM(int m, int n)
 {
-    if (m > n) Console.WriteLine("Число M должно быть меньше числа N.");
-    else
-        for (int i = m; i <= n; i++)
-        {
-            Console.Write($"{m} ");
-            m++;
-        }
+    if (m > n) return;
+    Console.Write($"{m} ");
+    NaturalNumbersNToM(++m, n);
 }
 
-NaturalNumbersNToM(4, 3);
+NaturalNumbersNToM(1, 10);
