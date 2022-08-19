@@ -47,4 +47,4 @@ string[] arrayNaturalNumberIntervalString = GetUserInputNumbersString("Введ�
 CheckUserInputToInt(arrayNaturalNumberIntervalString);
 int[] arrayNaturalNumberIntervalInt = ConvertUserInputNumbersInt(arrayNaturalNumberIntervalString);
 int sum = GetSumNaturalNumbersmToN(arrayNaturalNumberIntervalInt[0], arrayNaturalNumberIntervalInt[1]);
-Console.WriteLine($"{sum}");
+Console.WriteLine($"Сумма всех натуральных чисел в заданном интервале: {sum}");
