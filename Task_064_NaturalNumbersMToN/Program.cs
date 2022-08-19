@@ -42,7 +42,7 @@ void WriteNaturalNumbersNToM(int m, int n)
 }
 
 
-Console.WriteLine();
+Console.Clear();
 string[] arrayNaturalNumberIntervalString = GetUserInputNumbersString("Введите интервал значений натуральных чисел: ");
 CheckUserInputToInt(arrayNaturalNumberIntervalString);
 int[] arrayNaturalNumberIntervalInt = ConvertUserInputNumbersInt(arrayNaturalNumberIntervalString);

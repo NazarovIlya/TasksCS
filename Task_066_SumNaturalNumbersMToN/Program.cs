@@ -11,5 +11,7 @@ int GetSumNaturalNumbersmToN(int m, int n)
     return sum += GetSumNaturalNumbersmToN(++m, n);
 }
 
+
+//Console.Clear();
 int sum = GetSumNaturalNumbersmToN(4, 8);
 Console.WriteLine($"{sum}");
