@@ -3,6 +3,36 @@
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
 
+string[] GetUserInputNumbersString(string userInputTextString)
+{
+    Console.WriteLine(userInputTextString);
+    string[] userInputString = Console.ReadLine().Split(",");
+    return userInputString;
+}
+
+void CheckUserInputToInt(string[] userInputString)
+{
+    for (int i = 0; i < userInputString.Length; i++)
+    {
+        if (userInputString[i] == string.Empty || userInputString[i] == " "
+            || Convert.ToInt32(userInputString[i]) == null
+            || userInputString.Length < 2)
+        {
+            Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
+            Environment.Exit(0);
+        }
+    }
+}
+
+int[] ConvertUserInputNumbersInt(string[] userNumberString)
+{
+    int[] userNumberInt = new int[userNumberString.Length];
+    for (int i = 0; i < userNumberString.Length; i++)
+    {
+        userNumberInt[i] = Convert.ToInt32(userNumberString[i]);
+    }
+    return userNumberInt;
+}
 
 int GetSumNaturalNumbersmToN(int m, int n)
 {
@@ -13,5 +43,8 @@ int GetSumNaturalNumbersmToN(int m, int n)
 
 
 //Console.Clear();
-int sum = GetSumNaturalNumbersmToN(4, 8);
+string[] arrayNaturalNumberIntervalString = GetUserInputNumbersString("Введите интервал значений натуральных чисел: ");
+CheckUserInputToInt(arrayNaturalNumberIntervalString);
+int[] arrayNaturalNumberIntervalInt = ConvertUserInputNumbersInt(arrayNaturalNumberIntervalString);
+int sum = GetSumNaturalNumbersmToN(arrayNaturalNumberIntervalInt[0], arrayNaturalNumberIntervalInt[1]);
 Console.WriteLine($"{sum}");
