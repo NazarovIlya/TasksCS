@@ -59,7 +59,6 @@ void SortLineElementsMatrix2D(int[,] matrix2D)
     int minValue = matrix2D[0, 0];
     for (int i = 0; i < matrix2D.GetLength(0); i++)
     {
-        int minPosI = i;
         for (int j = 0; j < matrix2D.GetLength(1); j++)
         {
             for (int k = j + 1; k < matrix2D.GetLength(1); k++)
