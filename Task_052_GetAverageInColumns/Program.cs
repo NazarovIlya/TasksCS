@@ -16,7 +16,7 @@ int[] GetUserInputNumbersInt(string userInputNumberString)
     {
         if (stringArray[i] == string.Empty || stringArray[i] == " "
             || Convert.ToInt32(stringArray[i]) == null
-            || userInputString.Length < 2)
+            || userInputNumberString.Length < 2)
         {
             Console.WriteLine("Ошибка ввода данных. Попробуйте еще раз запустить программу и ввести данные корректно.");
             Environment.Exit(0);
@@ -49,7 +49,7 @@ double[] GetAverageColumnNumbersArray(int[,] matrixTwoDimension, int signsAfterD
         {
             sum += matrixTwoDimension[j, i];
         }
-        double average = sum / matrixTwoDimension.GetLength(1);
+        double average = sum / matrixTwoDimension.GetLength(0);
         arrayAverage[i] = Math.Round(average, signsAfterDot);
     }
     return arrayAverage;
