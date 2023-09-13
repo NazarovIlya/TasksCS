@@ -1,6 +1,4 @@
-﻿
-
-using _01_sorts;
+﻿using _01_sorts;
 
 Console.Clear();
 
