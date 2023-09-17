@@ -11,8 +11,8 @@ namespace _02_Sort
 	{
 		public Sort() { }
 
-		public int[] BubbleSort(int[] array)
-		{
+		public int[] BubbleSort(int[] array) 
+		{ 
 			for (int i = 0; i < array.Length; i++)
 			{
 				for (int j = 0; j < array.Length - i - 1; j++)
