@@ -13,6 +13,6 @@ internal class Program
 
     PearsonCalc calc = new PearsonCalc();
 
-    Console.WriteLine(string.Format("{0:N4}", calc.Calculate(items)));
+    Console.WriteLine(string.Format("Pearson correlation ratio: {0:N4}", calc.Calculate(items)));
   }
 }
