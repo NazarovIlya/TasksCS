@@ -20,7 +20,7 @@ namespace Stopwach
       return MenuIndex(commands);
     }
 
-    public void PrintCount(Model model) => Console.Write($"\r{model.Counter}");
+    public void PrintCount(Model model) => Console.Write($"\r==> {model.Counter} second(s).");
 
     private int MenuIndex(List<ICommand> commands)
     {
@@ -36,6 +36,7 @@ namespace Stopwach
         if (input.All(char.IsDigit) && regex.IsMatch(input))
         {
           index = int.Parse(input);
+          if(index >= startIndex && index <= commands.Count)
           flag = false;
         }
       }

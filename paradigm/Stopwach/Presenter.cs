@@ -9,7 +9,6 @@ namespace Stopwach
 {
   internal class Presenter
   {
-    private bool state;
     private List<ICommand> commands;
     View view;
     Model model;
@@ -22,13 +21,14 @@ namespace Stopwach
       {
         new StartCommand(model, view),
         new PauseCommand(model, view),
-        new StopCommand()
+        new StopCommand(model, view),
+        new QuiteCommand(model, view)
       };
     }
 
     public void StartStopwach()
     {
-      while (true)
+      do
       {
         Console.Clear();
         int index = view.Menu(commands);
@@ -36,8 +36,9 @@ namespace Stopwach
         {
           commands[index].Execute();
         }
-        while (!Console.KeyAvailable && model.State);
+        while (!Console.KeyAvailable);
       }
+      while (model.State);
     }
   }
 }

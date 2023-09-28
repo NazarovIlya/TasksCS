@@ -8,11 +8,21 @@ namespace Stopwach.Command
 {
   internal class QuiteCommand : ICommand
   {
+    Model model;
+    View view;
+
+    public QuiteCommand(Model model, View view)
+    {
+      this.model = model;
+      this.view = view;
+    }
+
     public string Description() => "Press to  QUITE stopwatch";
 
     public void Execute()
     {
-      throw new NotImplementedException();
+      model.State = false;
+      view.PrintCount(model);
     }
   }
 }

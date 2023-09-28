@@ -17,7 +17,7 @@ namespace Stopwach.Command
       this.model = model;
       this.view = view;
     }
-    public string Description() => "Press to PAUSE stopwatch";
+    public string Description() => "Press to PAUSE (START to continue) stopwatch";
 
     public void Execute()
     {

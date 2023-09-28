@@ -8,11 +8,20 @@ namespace Stopwach.Command
 {
   internal class StopCommand : ICommand
   {
+    Model model;
+    View view;
+
+    public StopCommand(Model model, View view)
+    {
+      this.model = model;
+      this.view = view;
+    }
     public string Description() => "Press to STOP stopwatch";
 
     public void Execute()
     {
-      throw new NotImplementedException();
+      model.Counter = 0;
+      view.PrintCount(model);
     }
   }
 }
